@@ -13,7 +13,7 @@ class ImageTableSeeder extends Seeder
     {
         $image = new \App\Image([
             'id_image' => '1';
-            'image1' =>
+            'image1' => ''
         ])
     }
 }

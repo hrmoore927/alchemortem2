@@ -1,5 +1,8 @@
-//$('.carousel .slide').carousel(){
-//    interval: 2000;
-////    pause: "hover";
-////    wrap: true;
-//}
+$(document).ready(function(){
+    $('.carousel').carousel({
+      interval: 3000
+    })
+    
+    $('.carousel').carousel('cycle');
+});
+  });
