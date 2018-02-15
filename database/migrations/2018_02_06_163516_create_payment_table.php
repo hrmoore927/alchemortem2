@@ -15,9 +15,8 @@ class CreatePaymentTable extends Migration
     {
         Schema::create('payment', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id_payment');
+            $table->increments('id_payment')->autoIncrement();
             $table->string('type_payment');
-            $table->string('status_payment');
         });
     }
 

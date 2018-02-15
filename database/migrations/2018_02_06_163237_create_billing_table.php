@@ -15,13 +15,16 @@ class CreateBillingTable extends Migration
     {
         Schema::create('billing', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id_bill');
+            $table->increments('id_bill')->autoIncrement();
             $table->string('address1_bill');
             $table->string('address2_bill');
             $table->string('city_bill');
-            $table->string('state_bill');
+            $table->integer('id_state')->unsigned();
+            $table->foreign('id_state')->references('id_state')->on('states');
             $table->string('zip_bill');
         });
+        
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

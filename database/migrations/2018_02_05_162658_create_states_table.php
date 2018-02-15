@@ -14,8 +14,10 @@ class CreateStatesTable extends Migration
     public function up()
     {
         Schema::create('states', function (Blueprint $table) {
-            $table->increments('id');
-            $table->char('state, 2');
+            $table->engine = 'InnoDB';
+            $table->increments('id_state')->autoIncrement();
+            $table->char('stateAbbrev', 2);
+            $table->string('stateName');
         });
     }
 

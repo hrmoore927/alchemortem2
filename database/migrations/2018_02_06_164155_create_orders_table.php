@@ -15,9 +15,9 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id_order');
+            $table->increments('id_order')->autoIncrement();
             $table->integer('total');
-            $table->date('orderDate');
+            $table->date('orderDate')->index('orderDate');
             $table->date('shipDate');
             $table->string('orderStatus');
             $table->integer('id_users')->unsigned();
@@ -25,6 +25,8 @@ class CreateOrdersTable extends Migration
             $table->integer('id_payment')->unsigned();
             $table->foreign('id_payment')->references('id_payment')->on('payment');
         });
+        
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

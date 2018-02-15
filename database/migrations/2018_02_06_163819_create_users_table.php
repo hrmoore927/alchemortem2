@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id_users');
+            $table->increments('id_users')->autoIncrement();
             $table->string('fName_users');
             $table->string('lName_users');
             $table->string('email_users')->unique();
@@ -30,6 +30,8 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

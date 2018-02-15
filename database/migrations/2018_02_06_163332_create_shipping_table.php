@@ -15,13 +15,16 @@ class CreateShippingTable extends Migration
     {
         Schema::create('shipping', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id_ship');
+            $table->increments('id_ship')->autoIncrement();
             $table->string('address1_ship');
             $table->string('address2_ship');
             $table->string('city_ship');
-            $table->string('state_ship');
+            $table->integer('id_state')->unsigned();
+            $table->foreign('id_state')->references('id_state')->on('states');
             $table->string('zip_ship');
         });
+        
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
