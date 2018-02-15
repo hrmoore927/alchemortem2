@@ -81,14 +81,25 @@ nav, .main {
     width: 90%;
 }
 
+.navlinks {
+    float: right;
+}
+
+.welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 h1 {
     font-size: 30px;
-    padding-top: 150px;
+    padding-top: 30px;
     padding-bottom: 15px;
 }
 
 p {
     font-family: 'Lato Light';
+    padding-bottom: 20px;
 }
 
 .footer {

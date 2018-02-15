@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>@yield('title')</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ URL::to('fonts/fontawesome-free-5.0.6/web-fonts-with-css/fontawesome-all.min.css') }}">
-    <link rel="stylesheet" href="{{ URL::to('fonts/fontawesome-free-5.0.6/web-fonts-with-css/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::to('fonts/fontawesome-free-5.0.6/web-fonts-with-css/css/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::to('fonts/fontawesome-free-5.0.6/web-fonts-with-css/css/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ URL::to('css/alchemortem.css') }}">
 </head>
 <body>
@@ -18,8 +18,10 @@
         <div class="row">
             <div class="col-lg-12">
                 <nav class="navbar navbar-expand-md navbar-light">
+                    <div class="col-lg-3">
                     <a class="logo" href="#"><img src="{{ URL::to('images/alchemortemLogoDraft.png')  }}"></a>
-                    <div class="container-fluid navlinks">
+                    </div>
+                    <div class="col-lg-9 navlinks">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>
@@ -42,6 +44,10 @@
                                 <a class="nav-link" href="#">My Account</a>
                             </li>
                         </ul>
+                        <form class="form-inline" id="search">
+                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn bg-light" type="submit"><i class="fas fa-search"></i></button>
+                        </form>
                     </div>
                     </div>
                 </nav>
