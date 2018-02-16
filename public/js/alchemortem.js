@@ -1,8 +1,6 @@
-$(document).ready(function(){
+//$(document).ready(function(){
     $('.carousel').carousel({
-      interval: 3000
-    })
-    
-    $('.carousel').carousel('cycle');
-});
-  });
+        interval: 1000;
+    });
+//    $('.carousel').carousel('cycle');
+//});
