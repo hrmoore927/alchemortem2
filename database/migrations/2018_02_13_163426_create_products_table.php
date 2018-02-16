@@ -17,14 +17,11 @@ class CreateProductsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id_product')->autoIncrement();
             $table->string('productName')->index('productName');
-            $table->integer('id_images')->unsigned();
-            $table->foreign('id_images')->references('id_images')->on('images');
             $table->text('description');
             $table->string('materials');
             $table->string('dimensions');
             $table->string('category');
             $table->integer('price');
-            $table->string('keywords')->index('keywords');
         });
     }
 

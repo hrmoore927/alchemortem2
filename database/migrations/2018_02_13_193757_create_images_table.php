@@ -19,6 +19,8 @@ class CreateImagesTable extends Migration
             $table->string('image2')->nullable();
             $table->string('image3')->nullable();
             $table->string('image4')->nullable();
+            $table->integer('id_product')->unsigned();
+            $table->foreign('id_product')->references('id_product')->on('products')->onDelete('cascade');
         });
     }
 

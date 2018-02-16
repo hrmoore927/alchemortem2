@@ -58,10 +58,10 @@
     <div class="container-fluid main">
         @yield('content')
     </div>
-    <div class="container-fluid footer">
-        <div class="row">
+    <div class="container-fluid" id="footer">
+        <div class="row justify-content-center">
             <div class="col-lg-12 bg-light">
-                
+                <p>Copyright &copy; Alchemortem 2018</p>
             </div>
         </div>
     </div>

@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('partials.index');
 });
+
+Route::get('/products', 'ProductController@getProducts';
+})
