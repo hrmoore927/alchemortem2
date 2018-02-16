@@ -12,7 +12,12 @@
 <body>
     <div class="container-fluid header">
         <div class="row">
-            <div class="col-lg-12"></div>
+            <div class="col-lg-12">
+                <form class="form-inline" id="search">
+                    <input class="form-control searchInput" type="search" placeholder="Search" aria-label="Search">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
         </div>
     </div>
     <div class="container-fluid masthead bg-light">
@@ -23,11 +28,11 @@
                         <a class="logo" href="#"><img src="{{ URL::to('images/alchemortemLogoDraft.png')  }}"></a>
                     </div>
                     <div class="col-lg-9 navlinks">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="nav navbar-nav navbar-right">
+                            <ul class="nav navbar-nav ml-auto">
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Home </a>
                                 </li>
@@ -45,10 +50,6 @@
                                     <a class="nav-link" href="#">My Account</a>
                                 </li>
                             </ul>
-                            <form class="form-inline" id="search">
-                                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn bg-light" type="submit"><i class="fas fa-search"></i></button>
-                            </form>
                         </div>
                     </div>
                 </nav>
