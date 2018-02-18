@@ -14,13 +14,9 @@ class CreateImagesTable extends Migration
     public function up()
     {
         Schema::create('images', function (Blueprint $table) {
-            $table->increments('id_images')->autoIncrement();
-            $table->string('image1');
-            $table->string('image2')->nullable();
-            $table->string('image3')->nullable();
-            $table->string('image4')->nullable();
-            $table->integer('id_product')->unsigned();
-            $table->foreign('id_product')->references('id_product')->on('products')->onDelete('cascade');
+            $table->engine = 'InnoDB';
+            $table->increments('image_id')->autoIncrement();
+            $table->string('image');
         });
     }
 

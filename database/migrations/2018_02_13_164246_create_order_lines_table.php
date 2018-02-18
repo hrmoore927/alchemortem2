@@ -15,10 +15,10 @@ class CreateOrderLinesTable extends Migration
     {
         Schema::create('order_lines', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->integer('id_order')->unsigned();
-            $table->foreign('id_order')->references('id_order')->on('orders');
-            $table->integer('id_product')->unsigned();
-            $table->foreign('id_product')->references('id_product')->on('products');
+            $table->integer('order_id')->unsigned();
+            $table->foreign('order_id')->references('order_id')->on('orders');
+            $table->integer('product_id')->unsigned();
+            $table->foreign('product_id')->references('product_id')->on('products');
             $table->integer('quantity');
         });
     }

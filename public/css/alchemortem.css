@@ -101,6 +101,10 @@ nav, .main {
     margin-left: 30px;
 }
 
+.nav-item {
+    padding-left: 10px;
+}
+
 .navbar-toggler {
     float: right;
     margin-top: -50px;

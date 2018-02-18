@@ -15,7 +15,7 @@ class CreateStatesTable extends Migration
     {
         Schema::create('states', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id_state')->autoIncrement();
+            $table->increments('state_id')->autoIncrement();
             $table->char('stateAbbrev', 2);
             $table->string('stateName');
         });

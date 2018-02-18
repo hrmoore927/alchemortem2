@@ -15,15 +15,15 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id_order')->autoIncrement();
+            $table->increments('order_id')->autoIncrement();
             $table->integer('total');
             $table->date('orderDate')->index('orderDate');
             $table->date('shipDate');
             $table->string('orderStatus');
-            $table->integer('id_users')->unsigned();
-            $table->foreign('id_users')->references('id_users')->on('users');
-            $table->integer('id_payment')->unsigned();
-            $table->foreign('id_payment')->references('id_payment')->on('payment');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('user_id')->on('users');
+            $table->integer('payment_id')->unsigned();
+            $table->foreign('payment_id')->references('payment_id')->on('payment');
         });
         
         Schema::enableForeignKeyConstraints();

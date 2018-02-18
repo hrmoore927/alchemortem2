@@ -8,8 +8,7 @@ class ProductController extends Controller
 {
     public function getProducts(){
         $products = Product::all();
-        return view('shop.products', [
-            'products' => $products
+        return view:make('product_list')->with('products', $products)
         ]);
     }
 }

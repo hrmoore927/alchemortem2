@@ -12,11 +12,11 @@ class PaymentTableSeeder extends Seeder
     public function run()
     {
         DB::table('payment')->insert([
-            'type_payment' => 'Stripe'
+            'payment_type' => 'Stripe'
         ]);
         
         DB::table('payment')->insert([
-            'type_payment' => 'Square'
+            'payment_type' => 'Square'
         ]);
     }
 }
