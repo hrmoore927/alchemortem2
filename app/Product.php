@@ -12,8 +12,4 @@ class Product extends Model
         return $this->hasMany('App\Image', 'foreign_key');
     }
     
-    $images = App\Post::find(1)->images;
-    foreach ($images as $image) {
-        
-    }
 }

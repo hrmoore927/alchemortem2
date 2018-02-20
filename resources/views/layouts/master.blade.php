@@ -25,7 +25,7 @@
             <div class="col-lg-12">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <div class="col-lg-3">
-                        <a class="logo" href="#"><img src="{{ URL::to('images/alchemortemLogoDraft.png')  }}"></a>
+                        <a class="logo" href="#"><img src="{{ URL::to('images/alchemortemLogoDraft.png') }}"></a>
                     </div>
                     <div class="col-lg-9 navlinks">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +66,7 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha2562Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
