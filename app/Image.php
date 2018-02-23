@@ -7,4 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     protected $fillable = ['image_id', 'image'];
+    
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+    
 }

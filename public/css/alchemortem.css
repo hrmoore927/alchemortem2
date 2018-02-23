@@ -111,10 +111,6 @@ nav, .main {
     margin-top: -50px;
 }
 
-#search {
-    padding-left: 50px;
-}
-
 #search button {
     background-color: transparent;
     border: none;
@@ -144,9 +140,28 @@ h1 {
 #footer {
     border-top: 1px solid #e5e5e5;
     background-color: #f8f9fa;
+    padding-bottom: 30px;
 }
 
 #footer p {
     text-align: center;
     padding-top: 10px;
+}
+
+.products {
+    margin: 10px 0;
+}
+
+.card {
+    width: 250px;
+    height: 300px;
+}
+
+.price {
+    padding-top: 10px;
+}
+
+.add {
+    float: right;
+    margin-top: -10px;
 }

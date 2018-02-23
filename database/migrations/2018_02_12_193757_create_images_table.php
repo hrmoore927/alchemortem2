@@ -17,6 +17,8 @@ class CreateImagesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('image_id')->autoIncrement();
             $table->string('image');
+            $table->integer('product_id')->unsigned();
+            $table->foreign('product_id')->references('product_id')->on('products');
         });
     }
 

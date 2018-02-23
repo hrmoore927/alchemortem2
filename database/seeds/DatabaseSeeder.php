@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
             StateTableSeeder::class,
             PaymentTableSeeder::class,
             RoleTableSeeder::class,
-            ImageTableSeeder::class,
-            ProductTableSeeder::class
+            ProductTableSeeder::class,
+            ImageTableSeeder::class
         ]);
     }
 }

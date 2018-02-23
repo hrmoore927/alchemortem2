@@ -34,10 +34,10 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="nav navbar-nav ml-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Home </a>
+                                    <a class="nav-link" href="{{ url('/') }}">Home </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Shop</a>
+                                    <a class="nav-link" href="{{ url('/shop-products') }}">Shop</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Cart</a>
