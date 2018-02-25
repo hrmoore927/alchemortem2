@@ -16,3 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('/shop-products', 'ProductController@getProducts');
+
+Route::get('/signup', 'UserController@getSignup');
+Route::post('/signup', 'UserController@postSignup');

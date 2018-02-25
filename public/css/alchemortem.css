@@ -86,6 +86,7 @@ body {
 .masthead {
     border-bottom: 1px solid #e5e5e5;
     width: 100%;
+    margin-bottom: 20px;
 }
 
 .logo img {
@@ -133,14 +134,11 @@ h1 {
     font-size: 16px;
 }
 
-.carousel {
-    padding: 10px 0;
-}
-
 #footer {
     border-top: 1px solid #e5e5e5;
     background-color: #f8f9fa;
-    padding-bottom: 30px;
+    height: 100%; /* footer needs to go all the way to bottom */
+    margin-top: 20px;
 }
 
 #footer p {
@@ -164,4 +162,8 @@ h1 {
 .add {
     float: right;
     margin-top: -10px;
+}
+
+.signup input, .signin input {
+    width: 325px;
 }

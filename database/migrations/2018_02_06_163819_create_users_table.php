@@ -16,11 +16,11 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('user_id')->autoIncrement();
-            $table->string('user_fName');
-            $table->string('user_lName');
-            $table->string('user_email')->unique();
-            $table->string('user_password');
-            $table->string('user_phone');
+            $table->string('fName');
+            $table->string('lName');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('phone');
             $table->integer('bill_id')->unsigned();
             $table->foreign('bill_id')->references('bill_id')->on('billing')->onDelete('cascade');
             $table->integer('ship_id')->unsigned();
