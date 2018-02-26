@@ -13,9 +13,11 @@
 
 Route::get('/', function () {
     return view('partials.index');
-});
+})->name('index');
 
 Route::get('/shop-products', 'ProductController@getProducts');
 
-Route::get('/signup', 'UserController@getSignup');
+Route::get('/signup', 'UserController@getSignup')->name('signup');
 Route::post('/signup', 'UserController@postSignup');
+
+Route::get('/manage-users', 'UserController@getUsers')->name('manage-users');

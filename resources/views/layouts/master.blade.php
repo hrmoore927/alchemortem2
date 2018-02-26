@@ -44,10 +44,34 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Checkout</a>
-                                </li><li class="nav-item">
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" href="#">FAQ</a>
-                                </li><li class="nav-item">
-                                    <a class="nav-link" href="#">My Account</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account</a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    @if(count($errors) > 0)
+                                        <div class="alert alert-danger">
+                                            @foreach($errors->all() as $error)
+                                                <p>{{ $error }}</p>
+                                            @endforeach
+                                        </div>
+                                    @endif
+                                    <form action="" method="post">
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="text" id="email" name="email" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <input type="text" id="password" name="password" class="form-control">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Sign In</button>
+                                    </form>
+                                    <p>Don't have an account?</p>
+                                    <a class="dropdown-item signUpLink" href="{{ url('/signup') }}">Sign up here</a>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -59,9 +83,9 @@
     <div class="container-fluid main">
         @yield('content')
     </div>
-    <div class="container-fluid" id="footer">
+    <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-lg-12 bg-light">
+            <div class="col-lg-12 bg-light footer">
                 <p>Copyright &copy; Alchemortem 2018</p>
             </div>
         </div>

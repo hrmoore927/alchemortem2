@@ -15,16 +15,25 @@ class UserController extends Controller
     
     public function postSignup(Request $request) {
         $this->validate($request, [
+            'fName' => 'required',
+            'lName' => 'required',
             'email' => 'email|required|unique:users',
             'password' => 'required|min:4'
         ]);
         
         $user = new User([
+            'fName' => $request->input('fName'),
+            'lName' => $request->input('lName'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password'))
         ]);
-        $user-save();
+        $user->save();
         
-        return redirect()->route('partials.index');
+        return redirect()->route('index');
+    }
+    
+    public function getUsers() {
+        $users = User::all();
+        return view('user.manage-users')->with('users', $users);
     }
 }

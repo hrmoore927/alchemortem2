@@ -20,13 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('lName');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('phone');
-            $table->integer('bill_id')->unsigned();
-            $table->foreign('bill_id')->references('bill_id')->on('billing')->onDelete('cascade');
-            $table->integer('ship_id')->unsigned();
-            $table->foreign('ship_id')->references('ship_id')->on('shipping')->onDelete('cascade');
-            $table->integer('role_id')->unsigned();
-            $table->foreign('role_id')->references('role_id')->on('roles')->onDelete('cascade');
+            $table->string('role')->default('user');
             $table->rememberToken();
             $table->timestamps();
         });
