@@ -30,7 +30,9 @@ class UserController extends Controller
         ]);
         $user->save();
         
-        return redirect()->route('index');
+        Auth::login($user);
+        
+        return redirect()->route('my-account');
     }
     
     public function getUsers() {
@@ -39,7 +41,7 @@ class UserController extends Controller
     }
     
     public function getSignin() {
-        return view('signin');
+        return view('user.signin');
     }
     
     public function postSignin(Request $request) {
@@ -56,5 +58,10 @@ class UserController extends Controller
     
     public function getAccount() {
         return view('user.account');
+    }
+    
+    public function getLogout() {
+        Auth::logout();
+        return redirect()->route('index');
     }
 }

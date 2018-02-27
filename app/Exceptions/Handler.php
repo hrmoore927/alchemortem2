@@ -3,7 +3,10 @@
 namespace App\Exceptions;
 
 use Exception;
+use Request;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Response;
 
 class Handler extends ExceptionHandler
 {
@@ -49,5 +52,14 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         return parent::render($request, $exception);
+    }
+    
+    protected function unauthenticated($request, AuthenticationException $e)
+    {
+        if ($request->ajax() || $request->wantsJson()) {
+            return response('Unauthorized.', 401);
+        } else {
+            return redirect()->route('signin');
+        }
     }
 }

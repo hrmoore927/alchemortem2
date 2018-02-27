@@ -49,30 +49,39 @@
                                     <a class="nav-link" href="#">FAQ</a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account</a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    @if(count($errors) > 0)
-                                        <div class="alert alert-danger">
-                                            @foreach($errors->all() as $error)
-                                                <p>{{ $error }}</p>
-                                            @endforeach
+                                    
+                                    @if(Auth::check())
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account</a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <a class="dropdown-item" href="{{ route('my-account') }}">My Account</a>
+                                            <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
+                                        </div>
+                                    @else
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            @if(count($errors) > 0)
+                                                <div class="alert alert-danger">
+                                                    @foreach($errors->all() as $error)
+                                                        <p>{{ $error }}</p>
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                            <form action="{{ route('signin') }}" method="post">
+                                                <div class="form-group">
+                                                    <label for="email">Email</label>
+                                                    <input type="text" id="email" name="email" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="password">Password</label>
+                                                    <input type="password" id="password" name="password" class="form-control">
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Sign In</button>
+                                                {{ csrf_field() }}
+                                            </form>
+                                            <p>Don't have an account?</p>
+                                            <a class="dropdown-item signUpLink" href="{{ url('/signup') }}">Sign up here</a>
                                         </div>
                                     @endif
-                                    <form action="{{ route('signin') }}" method="post">
-                                        <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input type="text" id="email" name="email" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="password">Password</label>
-                                            <input type="password" id="password" name="password" class="form-control">
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Sign In</button>
-                                        {{ csrf_field() }}
-                                    </form>
-                                    <p>Don't have an account?</p>
-                                    <a class="dropdown-item signUpLink" href="{{ url('/signup') }}">Sign up here</a>
-                                    </div>
                                 </li>
                             </ul>
                         </div>
