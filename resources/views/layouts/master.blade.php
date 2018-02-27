@@ -40,7 +40,7 @@
                                     <a class="nav-link" href="{{ url('/shop-products') }}">Shop</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Cart</a>
+                                    <a class="nav-link" href="#">Cart <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Checkout</a>

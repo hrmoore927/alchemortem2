@@ -14,7 +14,7 @@ Alchemortem
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="3000">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="{{ URL::to('images/jawbone-earrings-2.jpg') }}" alt="Jawbone earrings close up">
+                    <img class="d-block w-100" src="{{ URL::to('images/jawbone-earrings-1.jpg') }}" alt="Jawbone earrings close up">
                 </div>
                 <div class="carousel-item">
                     <img class="d-block w-100" src="{{ URL::to('images/large-vert-earrings-1.jpg') }}" alt="Large vertebrae earrings close up">

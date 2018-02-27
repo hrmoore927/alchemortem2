@@ -1,7 +1,7 @@
 @extends('layouts.master')
   
 @section('title')
-Alchemortem - Sign Up
+Alchemortem - Sign In
 @endsection
    
 @section('content')

@@ -31,4 +31,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/logout', 'UserController@getLogout')->name('logout');
 });
 
+Route::get('/add-to-cart/{$id}', 'ProductController@getAddToCart')->name('add-to-cart');
+
 Route::get('/manage-users', 'UserController@getUsers')->name('manage-users');

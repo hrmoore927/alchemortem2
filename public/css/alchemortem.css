@@ -55,6 +55,11 @@ table {
     src: url('../fonts/Lato/Lato-Regular.ttf');
 }
 
+@font-face {
+    font-family: 'Lato Bold';
+    src: url('../fonts/Lato/Lato-Bold.ttf');
+}
+
 body {
     box-sizing: border-box;
     font-family: 'Lato Regular', 'Arial', sans-serif;
@@ -153,7 +158,16 @@ h1 {
 
 .card {
     width: 250px;
-    height: 300px;
+    height: 315px;
+    margin: 10px 0;
+}
+
+.card img {
+    height: 200px;
+}
+
+.card-title {
+    font-family: 'Lato Bold';
 }
 
 .price {
