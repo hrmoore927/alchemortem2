@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Auth;
 
 class UserController extends Controller
 {
@@ -35,5 +36,25 @@ class UserController extends Controller
     public function getUsers() {
         $users = User::all();
         return view('user.manage-users')->with('users', $users);
+    }
+    
+    public function getSignin() {
+        return view('signin');
+    }
+    
+    public function postSignin(Request $request) {
+        $this->validate($request, [
+            'email' => 'email|required',
+            'password' => 'required|min:4'
+        ]);
+        
+        if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
+            return redirect('my-account');
+        }
+        return redirect()->back();
+    }
+    
+    public function getAccount() {
+        return view('user.account');
     }
 }
