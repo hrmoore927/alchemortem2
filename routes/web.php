@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('partials.index');
 })->name('index');
 
-Route::get('/shop-products', 'ProductController@getProducts');
+Route::get('/shop-products', 'ProductController@getProducts')->name('shop.products');
 
 Route::group(['middleware' => 'guest'], function() {
     Route::get('/signup', 'UserController@getSignup')->name('signup');
@@ -31,6 +31,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/logout', 'UserController@getLogout')->name('logout');
 });
 
-Route::get('/add-to-cart/{$id}', 'ProductController@getAddToCart')->name('add-to-cart');
+Route::get('/add-to-cart/{id}', 'ProductController@getAddToCart')->name('add-to-cart');
+
+Route::get('/cart', 'ProductController@getCart')->name('cart');
 
 Route::get('/manage-users', 'UserController@getUsers')->name('manage-users');

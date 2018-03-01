@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-ADMIN - Alchemortem - Manage Users
+ADMIN - Manage Users - Alchemortem
 @endsection
 
 @section('content')

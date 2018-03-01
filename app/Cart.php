@@ -17,16 +17,16 @@ class Cart
         }
     }
     
-    public function add($item, $product_id) {
+    public function add($item, $id) {
         $storedItem = ['qty' => 0, 'price' => $item->price, 'item' => $item];
         if ($this->items) {
-            if (array_key_exists($product_id, $this->items)) {
-                $storedItem = $this->item[$product_id];
+            if (array_key_exists($id, $this->items)) {
+                $storedItem = $this->items[$id];
             }
         }
         $storedItem['qty']++;
         $storedItme['price'] = $item->price * $storedItem['qty'];
-        $this->items[$product_id] = $storedItem;
+        $this->items[$id] = $storedItem;
         $this->totalQty++;
         $this->totalPrice += $item->price;
     }

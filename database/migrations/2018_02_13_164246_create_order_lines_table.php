@@ -18,7 +18,7 @@ class CreateOrderLinesTable extends Migration
             $table->integer('order_id')->unsigned();
             $table->foreign('order_id')->references('order_id')->on('orders');
             $table->integer('product_id')->unsigned();
-            $table->foreign('product_id')->references('product_id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products');
             $table->integer('quantity');
         });
     }

@@ -15,7 +15,7 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('product_id')->autoIncrement();
+            $table->increments('id')->autoIncrement();
             $table->string('productName')->index('productName');
             $table->string('image1');
             $table->string('image2');

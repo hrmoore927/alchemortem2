@@ -64,8 +64,8 @@ body {
     box-sizing: border-box;
     font-family: 'Lato Regular', 'Arial', sans-serif;
     font-size: 16px;
-    height: 100%;
     background-color: #eaeaea;
+    overflow-x: hidden;
 }
 
 .header {
@@ -105,10 +105,6 @@ nav, .main {
     width: 90%;
 }
 
-.navlinks {
-    margin-left: 30px;
-}
-
 .nav-item {
     padding-left: 10px;
 }
@@ -121,6 +117,10 @@ nav, .main {
 #search button {
     background-color: transparent;
     border: none;
+}
+
+.badge-secondary {
+    margin-left: 5px;
 }
 
 .welcome {

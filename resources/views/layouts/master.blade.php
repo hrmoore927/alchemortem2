@@ -40,7 +40,7 @@
                                     <a class="nav-link" href="{{ url('/shop-products') }}">Shop</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Cart <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span></a>
+                                    <a class="nav-link" href="{{ url('/cart') }}">Cart <span class="badge badge-secondary">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Checkout</a>
@@ -57,7 +57,7 @@
                                             <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                                         </div>
                                     @else
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Customer Login</a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                             @if(count($errors) > 0)
                                                 <div class="alert alert-danger">
@@ -102,5 +102,6 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha2562Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="{{ URL::to('js/alchemortem.js') }}"></script>
 </body>
 </html>

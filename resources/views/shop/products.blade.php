@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Alchemortem - Shop Our Products
+Shop Our Products - Alchemortem
 @endsection
 
 @section('content')
@@ -13,8 +13,7 @@
                 <img class="card-img-top" src="{{ $product->image1 }}" alt="product image">
                 <div class="card-body">
                     <h5 class="card-title">{{ $product->productName }}</h5>
-                    <p class="price">${{ $product->price }} <a href="{{ route('add-to-cart', ['id' => $product->product_id]) }}" class="btn add">Add to cart</a></p>
-                    
+                    <p class="price">${{ $product->price }} <a href="{{ route('add-to-cart', ['id' => $product->id]) }}" class="btn add">Add to cart</a></p>
                 </div>
             </div>
         </div>
