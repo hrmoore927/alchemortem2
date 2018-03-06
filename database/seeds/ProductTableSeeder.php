@@ -20,7 +20,8 @@ class ProductTableSeeder extends Seeder
             'materials' => 'snake ribs, brass french hooks',
             'dimensions' => '2.5 in',
             'category' => 'earrings',
-            'price' => 25
+            'price' => 25,
+            'status' => 'available'
         ]);
         
         DB::table('products')->insert([
@@ -31,7 +32,8 @@ class ProductTableSeeder extends Seeder
             'materials' => 'snake ribs, vertebrae, silver french hooks',
             'dimensions' => '2.5 in',
             'category' => 'earrings',
-            'price' => 20
+            'price' => 20,
+            'status' => 'available'
         ]);
         
         DB::table('products')->insert([
@@ -42,7 +44,8 @@ class ProductTableSeeder extends Seeder
             'materials' => 'vertebrae, silver french hooks, green beads, silver hoops',
             'dimensions' => '45mm',
             'category' => 'earrings',
-            'price' => 30
+            'price' => 30,
+            'status' => 'available'
         ]);
         
         DB::table('products')->insert([
@@ -54,7 +57,8 @@ class ProductTableSeeder extends Seeder
             'materials' => 'jawbone, brass french hooks, brass chain',
             'dimensions' => '3.75 in',
             'category' => 'earrings',
-            'price' => 25
+            'price' => 25,
+            'status' => 'available'
         ]);
         
         DB::table('products')->insert([
@@ -67,7 +71,8 @@ class ProductTableSeeder extends Seeder
             'materials' => 'vertebrae, leverback silver hoops',
             'dimensions' => '70mm',
             'category' => 'earrings',
-            'price' => 35
+            'price' => 35,
+            'status' => 'available'
         ]);
         
         DB::table('products')->insert([
@@ -79,7 +84,8 @@ class ProductTableSeeder extends Seeder
             'materials' => 'vertebrae, silver french hooks, purple beads, silver hoops',
             'dimensions' => '45mm',
             'category' => 'earrings',
-            'price' => 30
+            'price' => 30,
+            'status' => 'available'
         ]);
         
         DB::table('products')->insert([
@@ -91,7 +97,8 @@ class ProductTableSeeder extends Seeder
             'materials' => 'vertebrae, silver french hooks, silver hoops',
             'dimensions' => '45mm',
             'category' => 'earrings',
-            'price' => 30
+            'price' => 30,
+            'status' => 'available'
         ]);
         
         DB::table('products')->insert([
@@ -103,7 +110,8 @@ class ProductTableSeeder extends Seeder
             'materials' => 'vertebrae, silver french hooks, silver hoops',
             'dimensions' => '45mm',
             'category' => 'earrings',
-            'price' => 30
+            'price' => 30,
+            'status' => 'available'
         ]);
         
         DB::table('products')->insert([
@@ -114,7 +122,8 @@ class ProductTableSeeder extends Seeder
             'materials' => 'quills, silver french hooks',
             'dimensions' => '5 in',
             'category' => 'earrings',
-            'price' => 20
+            'price' => 20,
+            'status' => 'available'
         ]);
         
         DB::table('products')->insert([
@@ -126,7 +135,8 @@ class ProductTableSeeder extends Seeder
             'materials' => 'snake ribs, silver french hooks',
             'dimensions' => '3 in',
             'category' => 'earrings',
-            'price' => 25
+            'price' => 25,
+            'status' => 'available'
         ]);
         
         DB::table('products')->insert([
@@ -138,7 +148,8 @@ class ProductTableSeeder extends Seeder
             'materials' => 'vertebrae, brass french hooks, brass hoops',
             'dimensions' => '30mm',
             'category' => 'earrings',
-            'price' => 25
+            'price' => 25,
+            'status' => 'available'
         ]);
         
         DB::table('products')->insert([
@@ -150,7 +161,8 @@ class ProductTableSeeder extends Seeder
             'materials' => 'vertebrae, brass french hooks, brass hoops',
             'dimensions' => '30mm',
             'category' => 'earrings',
-            'price' => 25
+            'price' => 25,
+            'status' => 'available'
         ]);
         
         DB::table('products')->insert([
@@ -162,7 +174,8 @@ class ProductTableSeeder extends Seeder
             'materials' => 'stingray barb, brass french hooks',
             'dimensions' => '5.5 in',
             'category' => 'earrings',
-            'price' => 20
+            'price' => 20,
+            'status' => 'available'
         ]);
         
         DB::table('products')->insert([
@@ -174,7 +187,8 @@ class ProductTableSeeder extends Seeder
             'materials' => 'snake rib, vertebrae, brass french hooks',
             'dimensions' => '3 in',
             'category' => 'earrings',
-            'price' => 20
+            'price' => 20,
+            'status' => 'available'
         ]);
     }
 }

@@ -6,6 +6,7 @@ use App\Product;
 use App\Cart;
 use Illuminate\Http\Request;
 use Session;
+use App\Http\Requests;
 
 class ProductController extends Controller
 {
@@ -41,5 +42,38 @@ class ProductController extends Controller
         $cart = new Cart($oldCart);
         $total = $cart->totalPrice;
         return view('shop.checkout', ['total' => $total]);
+    }
+    
+    public function getProductForm() {
+        return view ('shop.add-product');
+    }
+    
+    public function postAddProduct(Request $request) {
+        $this->validate($request, [
+            'productName' => 'required',
+            'image1' => 'required',
+            'image2' => 'required',
+            'description' => 'required',
+            'materials' => 'required',
+            'dimensions' => 'required',
+            'category' => 'required',
+            'price' => 'required'
+        ]);
+        
+        $product = new Product([
+            'productName' => $request->input('productName'),
+            'image1' => $request->input('image1'),
+            'image2' => $request->input('image2'),
+            'image3' => $request->input('image3'),
+            'image4' => $request->input('image4'),
+            'description' => $request->input('description'),
+            'materials' => $request->input('materials'),
+            'dimensions' => $request->input('dimensions'),
+            'category' => $request->input('category'),
+            'price' => $request->input('price')
+        ]);
+        $product->save();
+        
+        return redirect()->route('add-product');
     }
 }

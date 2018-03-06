@@ -47,3 +47,6 @@ Route::post('/checkout', 'ProductController@postCheckout');
 
 // admin pages
 Route::get('/manage-users', 'UserController@getUsers')->name('manage-users');
+
+Route::get('/add-product', 'ProductController@getProductForm')->name('add-product');
+Route::post('/add-product', 'ProductController@postAddProduct');
