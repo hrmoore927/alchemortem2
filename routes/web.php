@@ -11,12 +11,15 @@
 |
 */
 
+// home page
 Route::get('/', function () {
     return view('partials.index');
 })->name('index');
 
+// products page
 Route::get('/shop-products', 'ProductController@getProducts')->name('shop.products');
 
+// user sign up and sign in
 Route::group(['middleware' => 'guest'], function() {
     Route::get('/signup', 'UserController@getSignup')->name('signup');
     Route::post('/signup', 'UserController@postSignup');
@@ -25,14 +28,22 @@ Route::group(['middleware' => 'guest'], function() {
     Route::post('/signin', 'UserController@postSignin');
 });
 
+// user account and logout
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/my-account', 'UserController@getAccount')->name('my-account');
 
     Route::get('/logout', 'UserController@getLogout')->name('logout');
 });
 
+// add to cart
 Route::get('/add-to-cart/{id}', 'ProductController@getAddToCart')->name('add-to-cart');
 
+// view cart
 Route::get('/cart', 'ProductController@getCart')->name('cart');
 
+// checkout 
+Route::get('/checkout', 'ProductController@getCheckout')->name('checkout');
+Route::post('/checkout', 'ProductController@postCheckout');
+
+// admin pages
 Route::get('/manage-users', 'UserController@getUsers')->name('manage-users');

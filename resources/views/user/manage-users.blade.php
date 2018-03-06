@@ -15,16 +15,20 @@ ADMIN - Manage Users - Alchemortem
                     <th scope="col">Last</th>
                     <th scope="col">Email</th>
                     <th scope="col">Role</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($users as $user)
                     <tr>
-                        <th scope="row">{{ $user->user_id }}</th>
+                        <th scope="row">{{ $user->id }}</th>
                         <td>{{ $user->fName }}</td>
                         <td>{{ $user->lName }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role }}</td>
+                        <td>Edit</td>
+                        <td>Remove</td>
                     </tr>
                 @endforeach
             </tbody>

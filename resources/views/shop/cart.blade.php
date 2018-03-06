@@ -30,15 +30,16 @@ Cart - Alchemortem
                 </table>
             </div>
         </div>
+        <hr>
         <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-                <strong>Total: {{ $totalPrice }}</strong>
+            <div class="col-sm-6 offset-sm-9 col-md-6 offset-md-11">
+                <strong>Total: ${{ $totalPrice }}</strong>
             </div>
         </div>
         <hr>
         <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-                <a href="" class="btn btn-success" type="button">Checkout</a>
+            <div class="col-sm-6 offset-sm-9 col-md-6 offset-md-11">
+                <a href="{{ route('checkout') }}" class="btn btn-success" type="button">Checkout</a>
             </div>
         </div>
     @else
