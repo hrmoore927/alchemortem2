@@ -7,15 +7,23 @@ ADMIN - Manage Users - Alchemortem
 @section('content')
 <div class="row">
     <div class="col-md-12">
+        @if(Session::has('success'))
+            <div class="alert alert-success">
+                {{ Session::get('success') }}
+                @php
+                Session::forget('success');
+                @endphp
+            </div>
+        @endif
         <table class="table">
-            <thead>
+            <thead class="thead-dark">
                 <tr>
-                    <th class="thead-dark">User ID</th>
-                    <th class="thead-dark">First</th>
-                    <th class="thead-dark">Last</th>
-                    <th class="thead-dark">Email</th>
-                    <th class="thead-dark">Role</th>
-                    <th class="thead-dark" colspan="2">Actions</th>
+                    <th>User ID</th>
+                    <th>First</th>
+                    <th>Last</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th colspan="2">Actions</th>
                 </tr>
             </thead>
             <tbody>

@@ -80,6 +80,47 @@ class ProductController extends Controller
     
     public function getProductsInfo() {
         $products = Product::all();
-        return view('shop.products-info')->with('products', $products);
+        return view('shop.manage-products')->with('products', $products);
+    }
+    
+    public function editProduct($id)
+    {
+        $product = Product::find($id);
+        return view('shop.edit-product', compact('product', 'id'));
+    }
+    
+    public function updateProduct(Request $request, $id)
+    {
+        $product = Product::find($id);
+        $this->validate(request(), [
+            'productName' => 'required',
+            'image1' => 'required',
+            'image2' => 'required',
+            'description' => 'required',
+            'materials' => 'required',
+            'dimensions' => 'required',
+            'category' => 'required',
+            'price' => 'required',
+            'status' => 'required'
+        ]);
+        $product->productName = $request->input('productName');
+        $product->image1 = $request->input('image1');
+        $product->image2 = $request->input('image2');
+        $product->image3 = $request->input('image3');
+        $product->image4 = $request->input('image4');
+        $product->description = $request->input('description');
+        $product->materials = $request->input('materials');
+        $product->dimensions = $request->input('dimensions');
+        $product->category = $request->input('category');
+        $product->status = $request->input('status');
+        $product->save();
+        return redirect('manage-products')->with('success', 'Product has been updated!');
+    }
+    
+    public function deleteProduct($id)
+    {
+        $product = Product::find($id);
+        $product->delete();
+        return redirect('manage-products')->with('success', 'Product has been deleted');
     }
 }

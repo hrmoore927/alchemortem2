@@ -7,22 +7,30 @@ ADMIN - Manage Products - Alchemortem
 @section('content')
 <div class="row">
     <div class="col-md-12">
+        @if(Session::has('success'))
+            <div class="alert alert-success">
+                {{ Session::get('success') }}
+                @php
+                Session::forget('success');
+                @endphp
+            </div>
+        @endif
         <table class="table">
-            <thead>
+            <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Product ID</th>
-                    <th scope="col">Product Name</th>
-                    <th scope="col">Image 1</th>
-                    <th scope="col">Image 2</th>
-                    <th scope="col">Image 3</th>
-                    <th scope="col">Image 4</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Materials</th>
-                    <th scope="col">Dimensions</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Action</th>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Image 1</th>
+                    <th>Image 2</th>
+                    <th>Image 3</th>
+                    <th>Image 4</th>
+                    <th>Description</th>
+                    <th>Materials</th>
+                    <th>Dimensions</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th colspan="2">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,7 +48,8 @@ ADMIN - Manage Products - Alchemortem
                         <td>{{ $product->category }}</td>
                         <td>{{ $product->price }}</td>
                         <td>{{ $product->status }}</td>
-                        <td>Edit</td>
+                        <td><a class="btn btn-primary" href="{{ route('edit-product', $product->id) }}">Edit</a></td>
+                        <td><a class="btn btn-danger" href="{{ route('delete-product', $product->id) }}">Delete</a></td>
                     </tr>
                 @endforeach
             </tbody>

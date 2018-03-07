@@ -26,15 +26,4 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    
-    public function updateTicket($data)
-    {
-        $user = $this->find($data['id']);
-        $user->fName = $data['fName'];
-        $user->lName = $data['lName'];
-        $user->email = $data['email'];
-        $user->role = $data['role'];
-        $user->save();
-        return 1;
-    }
 }

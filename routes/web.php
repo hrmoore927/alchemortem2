@@ -55,8 +55,12 @@ Route::patch('/manage-user/{id}', 'UserController@updateUser');
 Route::get('/delete-user/{id}', 'UserController@deleteUser')->name('delete-user');
 
 // show all products
-Route::get('/products-info', 'ProductController@getProductsInfo')->name('products-info');
+Route::get('/manage-products', 'ProductController@getProductsInfo')->name('manage-products');
 // add a product
 Route::get('/add-product', 'ProductController@getProductForm')->name('add-product');
 Route::post('/add-product', 'ProductController@postAddProduct');
 // edit a product
+Route::get('/manage-product/{id}', 'ProductController@editProduct')->name('edit-product');
+Route::patch('/manage-product/{id}', 'ProductController@updateProduct');
+//delete user
+Route::get('/delete-product/{id}', 'ProductController@deleteProduct')->name('delete-product');
