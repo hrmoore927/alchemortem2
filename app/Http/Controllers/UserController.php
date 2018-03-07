@@ -84,7 +84,13 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->role = $request->input('role');
         $user->save();
-        $request->session()->flash('message', 'User successfully updated!');
         return redirect()->route('manage-users');
+    }
+    
+    public function deleteUser($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        return redirect('manage-users')->with('success', 'User has been deleted');
     }
 }

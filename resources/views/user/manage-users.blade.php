@@ -27,7 +27,7 @@ ADMIN - Manage Users - Alchemortem
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role }}</td>
                         <td><a class="btn btn-primary" href="{{ route('edit-user', $user->id) }}">Edit</a></td>
-                        <td><a class="btn btn-danger" href="">Delete</a></td>
+                        <td><a class="btn btn-danger" href="{{ route('delete-user', $user->id) }}">Delete</a></td>
                     </tr>
                 @endforeach
             </tbody>
