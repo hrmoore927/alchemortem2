@@ -220,3 +220,7 @@ h2 {
 .signup form {
     margin-top: 20px;
 }
+
+.managePhotos img {
+    max-width: 50px;
+}

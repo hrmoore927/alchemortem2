@@ -35,11 +35,6 @@ class UserController extends Controller
         return redirect()->route('my-account');
     }
     
-    public function getUsers() {
-        $users = User::all();
-        return view('user.manage-users')->with('users', $users);
-    }
-    
     public function getSignin() {
         return view('user.signin');
     }
@@ -63,5 +58,33 @@ class UserController extends Controller
     public function getLogout() {
         Auth::logout();
         return redirect()->route('index');
+    }
+    
+    public function getUsers() {
+        $users = User::all();
+        return view('user.manage-users')->with('users', $users);
+    }
+    
+    public function editUser($id)
+    {
+        $user = User::find($id);
+        return view('user.edit-user', compact('user', 'id'));
+    }
+    
+    public function updateUser(Request $request, User $user)
+    {
+        $request()->validate([
+            'fName' => 'required',
+            'lName' => 'required',
+            'email' => 'email|required|unique:users',
+            'role' => 'required'
+        ]);
+        $user->fName = $request->input('fName');
+        $user->lName = $request->input('lName');
+        $user->email = $request->input('email');
+        $user->role = $request->input('role');
+        $user->save();
+        $request->session()->flash('message', 'User successfully updated!');
+        return redirect()->route('manage-users');
     }
 }

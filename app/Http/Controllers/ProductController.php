@@ -11,7 +11,7 @@ use App\Http\Requests;
 class ProductController extends Controller
 {
     public function getProducts(){
-        $products = Product::all();
+        $products = Product::where('status', '=', 'available')->get();
         return view('shop.products')->with('products', $products);
     }
     
@@ -70,10 +70,16 @@ class ProductController extends Controller
             'materials' => $request->input('materials'),
             'dimensions' => $request->input('dimensions'),
             'category' => $request->input('category'),
-            'price' => $request->input('price')
+            'price' => $request->input('price'),
+            'status' => 'available'
         ]);
         $product->save();
         
-        return redirect()->route('add-product');
+        return redirect()->route('add-product')->with('success', 'New product has been added!');
+    }
+    
+    public function getProductsInfo() {
+        $products = Product::all();
+        return view('shop.products-info')->with('products', $products);
     }
 }

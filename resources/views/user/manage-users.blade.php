@@ -10,13 +10,12 @@ ADMIN - Manage Users - Alchemortem
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">User ID</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Role</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
+                    <th>User ID</th>
+                    <th>First</th>
+                    <th>Last</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th colspan="2">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,8 +26,8 @@ ADMIN - Manage Users - Alchemortem
                         <td>{{ $user->lName }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role }}</td>
-                        <td>Edit</td>
-                        <td>Remove</td>
+                        <td><a class="btn btn-primary" href="{{ route('edit-user', $user->id) }}">Edit</a></td>
+                        <td><a class="btn btn-danger" href="">Delete</a></td>
                     </tr>
                 @endforeach
             </tbody>

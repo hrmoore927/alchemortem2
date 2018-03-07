@@ -46,7 +46,13 @@ Route::get('/checkout', 'ProductController@getCheckout')->name('checkout');
 Route::post('/checkout', 'ProductController@postCheckout');
 
 // admin pages
+// show all users
 Route::get('/manage-users', 'UserController@getUsers')->name('manage-users');
-
+// edit user
+Route::get('/manage-user/{id}', 'UserController@editUser')->name('edit-user');
+// show all products
+Route::get('/products-info', 'ProductController@getProductsInfo')->name('products-info');
+// add a product
 Route::get('/add-product', 'ProductController@getProductForm')->name('add-product');
 Route::post('/add-product', 'ProductController@postAddProduct');
+// edit a product
