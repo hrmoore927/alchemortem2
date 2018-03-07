@@ -10,12 +10,12 @@ ADMIN - Manage Users - Alchemortem
         <table class="table">
             <thead>
                 <tr>
-                    <th>User ID</th>
-                    <th>First</th>
-                    <th>Last</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th colspan="2">Actions</th>
+                    <th class="thead-dark">User ID</th>
+                    <th class="thead-dark">First</th>
+                    <th class="thead-dark">Last</th>
+                    <th class="thead-dark">Email</th>
+                    <th class="thead-dark">Role</th>
+                    <th class="thead-dark" colspan="2">Actions</th>
                 </tr>
             </thead>
             <tbody>

@@ -50,6 +50,7 @@ Route::post('/checkout', 'ProductController@postCheckout');
 Route::get('/manage-users', 'UserController@getUsers')->name('manage-users');
 // edit user
 Route::get('/manage-user/{id}', 'UserController@editUser')->name('edit-user');
+Route::patch('/manage-user/{id}', 'UserController@updateUser');
 //delete user
 Route::get('/delete-user/{id}', 'UserController@deleteUser')->name('delete-user');
 

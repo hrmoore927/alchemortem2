@@ -71,12 +71,13 @@ class UserController extends Controller
         return view('user.edit-user', compact('user', 'id'));
     }
     
-    public function updateUser(Request $request, User $user)
+    public function updateUser(Request $request, $id)
     {
-        $request()->validate([
+        $user = User::find($id);
+        $this->validate(request(), [
             'fName' => 'required',
             'lName' => 'required',
-            'email' => 'email|required|unique:users',
+            'email' => 'email|required',
             'role' => 'required'
         ]);
         $user->fName = $request->input('fName');
@@ -84,7 +85,7 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->role = $request->input('role');
         $user->save();
-        return redirect()->route('manage-users');
+        return redirect('manage-users')->with('success', 'User has been updated!');
     }
     
     public function deleteUser($id)

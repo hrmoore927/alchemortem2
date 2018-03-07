@@ -2,24 +2,30 @@
 
 @section('title')
 ADMIN - Edit User - Alchemortem
+@endsection
 
 @section('content')
-<div class="container">
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div><br />
-@endif
     <div class="row">
     <div class="col-md-12">
         <h1>ADMIN - Edit User</h1>
     </div>
-    <form method="post" action="{{action('UserController@editUser', $id)}}" >
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div><br />
+    @endif
+    @if (\Session::has('success'))
+      <div class="alert alert-success">
+          <p>{{ \Session::get('success') }}</p>
+      </div><br />
+      @endif
+    <form method="post" action="{{action('UserController@updateUser', $id)}}" >
         {{csrf_field()}}
+        {{ method_field('PATCH') }}
         <input name="_method" type="hidden" value="PATCH">
         <div class="form-group">
             <input type="hidden" value="{{csrf_token()}}" name="_token" />
