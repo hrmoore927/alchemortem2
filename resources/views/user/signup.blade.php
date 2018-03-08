@@ -9,6 +9,7 @@ Sign Up - Alchemortem
     <div class="col-md-12">
         <h1>Sign Up</h1>
         <p>Customers must be logged in to purchase items. Don't have an account? No problem, you can sign up here!</p>
+        <p>Already have an account? Sign in <a href="{{ route('signin') }}">here</a>.</p>
     </div>
     <div class="col-md-4 col-sm-12 .offset-md-4 signup">
         @if(count($errors) > 0)

@@ -45,6 +45,7 @@ Route::get('/cart', 'ProductController@getCart')->name('cart');
 Route::get('/checkout', 'ProductController@getCheckout')->name('checkout');
 Route::post('/checkout', 'ProductController@postCheckout');
 
+// FAQ
 Route::get('/faq', function () {
     return view('partials.faq');
 })->name('faq');
