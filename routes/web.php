@@ -45,6 +45,10 @@ Route::get('/cart', 'ProductController@getCart')->name('cart');
 Route::get('/checkout', 'ProductController@getCheckout')->name('checkout');
 Route::post('/checkout', 'ProductController@postCheckout');
 
+Route::get('/faq', function () {
+    return view('partials.faq');
+})->name('faq');
+
 // admin pages
 // show all users
 Route::get('/manage-users', 'UserController@getUsers')->name('manage-users');
