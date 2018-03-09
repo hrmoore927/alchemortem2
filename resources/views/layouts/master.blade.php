@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="{{ URL::to('fonts/fontawesome-free-5.0.6/web-fonts-with-css/css/fontawesome-all.min.css') }}">
     <link rel="stylesheet" href="{{ URL::to('fonts/fontawesome-free-5.0.6/web-fonts-with-css/css/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ URL::to('css/alchemortem.css') }}">
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha2562Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="{{ URL::to('js/alchemortem.js') }}"></script>
 </head>
 <body>
     <div class="container-fluid header">
@@ -45,7 +42,7 @@
                                     <a class="nav-link" href="{{ url('/cart') }}">Cart <span class="badge badge-secondary">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Checkout</a>
+                                    <a class="nav-link" href="{{ url('/checkout') }}">Checkout</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/faq') }}">FAQ</a>
@@ -102,5 +99,9 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha2562Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="{{ URL::to('js/alchemortem.js') }}"></script>
+    @yield('scripts')
 </body>
 </html>

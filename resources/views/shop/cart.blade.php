@@ -8,8 +8,9 @@ Cart - Alchemortem
     @if(Session::has('cart'))
         <div class="row">
             <div class="col-sm-6 col-md-12">
+                <h1>Cart</h1>
                 <table class="table">
-                    <thead>
+                    <thead class="thead-dark">
                         <tr>
                           <th scope="col">Product Name</th>
                           <th scope="col">Quantity</th>

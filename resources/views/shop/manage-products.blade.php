@@ -7,6 +7,7 @@ ADMIN - Manage Products - Alchemortem
 @section('content')
 <div class="row">
     <div class="col-md-12">
+       <h1>ADMIN - Manage Products</h1>
         @if(Session::has('success'))
             <div class="alert alert-success">
                 {{ Session::get('success') }}
