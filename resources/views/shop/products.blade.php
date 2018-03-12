@@ -5,8 +5,11 @@ Shop Our Products - Alchemortem
 @endsection
 
 @section('content')
-    <h1>Products</h1>
     <div class="row productList">
+        <div class="col-md-12">
+            <h1>Products</h1>
+            <p>Click the item for more details.</p> 
+        </div>
         @foreach($products as $product)
         <div class="col-md-6 col-lg-4 col-xl-3 col-sm-6 col-xs-12 products">
             <div class="card">

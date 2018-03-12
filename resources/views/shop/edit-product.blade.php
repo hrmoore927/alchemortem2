@@ -69,8 +69,11 @@ ADMIN - Edit Product - Alchemortem
                     <input type="text" value="{{$product->price}}" name="price" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="status">Status (available or sold)</label>
-                    <input type="text" value="{{$product->status}}" name="status" class="form-control">
+                    Product Status<br>
+                    <select name="status" id="status" form="editProduct">
+                        <option value="available">Available</option>
+                        <option value="sold">Sold</option>
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>

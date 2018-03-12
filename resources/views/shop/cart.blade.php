@@ -12,10 +12,10 @@ Cart - Alchemortem
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
-                          <th scope="col">Product Name</th>
-                          <th scope="col">Quantity</th>
-                          <th scope="col">Price</th>
-                          <th scope="col">Action</th>
+                          <th>Product Name</th>
+                          <th>Quantity</th>
+                          <th>Price</th>
+                          <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -23,8 +23,8 @@ Cart - Alchemortem
                         <tr>
                             <td>{{ $product['item']['productName'] }}</td>
                             <td>{{ $product['qty'] }}</td>
-                            <td>{{ $product['price'] }}</td>
-                            <td>Action</td>
+                            <td>${{ $product['price'] }}</td>
+                            <td>Delete product</td>
                         </tr>
                         @endforeach
                     </tbody>
