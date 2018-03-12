@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Session;
 
 class RedirectIfAuthenticated
 {
@@ -15,12 +16,22 @@ class RedirectIfAuthenticated
      * @param  string|null  $guard
      * @return mixed
      */
+//    public function handle($request, Closure $next, $guard = null)
+//    {
+//        if (Auth::guard($guard)->check()) {
+//            return redirect('/');
+//        }
+//
+//        return $next($request);
+//    }
+    
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/');
+         
+                Session::put('oldUrl', $request->url());
+                return redirect('checkout');
         }
-
         return $next($request);
     }
 }

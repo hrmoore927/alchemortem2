@@ -14,18 +14,38 @@ Checkout - Alchemortem
             <form action="{{ route('checkout') }}" method="post" id="checkout-form">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" id="name" class="form-control" required>
+                            <input type="text" id="name" class="form-control" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="address">Address</label>
-                            <input type="text" id="address" class="form-control" required>
+                            <label for="line1">Shipping Address Line 1</label>
+                            <input type="text" id="line1" class="form-control" name="address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="line2">Shipping Address Line 2 (Optional)</label>
+                            <input type="text" id="line2" class="form-control" name="line2">
+                        </div>
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" class="form-control" name="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <input type="text" id="state" class="form-control" name="state" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="zip">Zip Code</label>
+                            <input type="text" id="zip" class="form-control" name="zip" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" id="email" class="form-control" name="email" required>
                         </div>
                         <div class="form-group">
                             <label for="card-element">Credit or debit card</label>
                         <div id="card-element">
                           <!-- A Stripe Element will be inserted here. -->
                         </div>
-
+                        
                         <!-- Used to display Element errors. -->
                         <div id="card-errors" role="alert"></div>
                     </div>

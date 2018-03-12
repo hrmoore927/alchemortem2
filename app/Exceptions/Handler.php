@@ -7,6 +7,7 @@ use Request;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Response;
+use Session;
 
 class Handler extends ExceptionHandler
 {
@@ -62,4 +63,14 @@ class Handler extends ExceptionHandler
             return redirect()->route('signin');
         }
     }
+    
+//    public function handle($request, Closure $next, $guard = null)
+//    {
+//        if (Auth::guard($guard)->check()) {
+//         
+//                Session::put('oldUrl', $request->url());
+//                return redirect('checkout');
+//        }
+//        return $next($request);
+//    }
 }

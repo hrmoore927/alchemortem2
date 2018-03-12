@@ -28,22 +28,24 @@ Route::group(['middleware' => 'guest'], function() {
     Route::post('/signin', 'UserController@postSignin');
 });
 
-// user account and logout
+// user must be logged in for these views
 Route::group(['middleware' => 'auth'], function() {
+    // user account
     Route::get('/my-account', 'UserController@getAccount')->name('my-account');
-
+    
+    //user logout
     Route::get('/logout', 'UserController@getLogout')->name('logout');
-});
+    
+    // checkout 
+    Route::get('/checkout', 'ProductController@getCheckout')->name('checkout');
+    Route::post('/checkout', 'ProductController@postCheckout');
+    });
 
 // add to cart
 Route::get('/add-to-cart/{id}', 'ProductController@getAddToCart')->name('add-to-cart');
 
 // view cart
 Route::get('/cart', 'ProductController@getCart')->name('cart');
-
-// checkout 
-Route::get('/checkout', 'ProductController@getCheckout')->name('checkout');
-Route::post('/checkout', 'ProductController@postCheckout');
 
 // FAQ
 Route::get('/faq', function () {
