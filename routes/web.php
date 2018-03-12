@@ -19,6 +19,8 @@ Route::get('/', function () {
 // products page
 Route::get('/shop-products', 'ProductController@getProducts')->name('shop.products');
 
+Route::get('/item/{id}', 'ProductController@showProduct')->name('show.product');
+
 // user sign up and sign in
 Route::group(['middleware' => 'guest'], function() {
     Route::get('/signup', 'UserController@getSignup')->name('signup');

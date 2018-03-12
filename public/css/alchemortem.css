@@ -241,3 +241,7 @@ h2 {
     border-radius: 3px;
     padding: 10px 0;
 }
+
+.singleItem img {
+    width: 300px;
+}

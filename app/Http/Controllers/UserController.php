@@ -60,7 +60,7 @@ class UserController extends Controller
             if (Session::has('oldUrl')) {
                 $oldUrl = Session::get('oldUrl');
                 Session::forget('oldUrl');
-                return redirect('checkout');
+                return redirect($oldUrl); // fix this redirect
             }
             return redirect('my-account');
         }

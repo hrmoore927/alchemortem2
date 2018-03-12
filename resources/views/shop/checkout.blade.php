@@ -25,15 +25,15 @@ Checkout - Alchemortem
                             <input type="text" id="line2" class="form-control" name="line2">
                         </div>
                         <div class="form-group">
-                            <label for="city">City</label>
+                            <label for="city">Shipping City</label>
                             <input type="text" id="city" class="form-control" name="city" required>
                         </div>
                         <div class="form-group">
-                            <label for="state">State</label>
+                            <label for="state">Shipping State</label>
                             <input type="text" id="state" class="form-control" name="state" required>
                         </div>
                         <div class="form-group">
-                            <label for="zip">Zip Code</label>
+                            <label for="zip">Shipping Zip Code</label>
                             <input type="text" id="zip" class="form-control" name="zip" required>
                         </div>
                         <div class="form-group">

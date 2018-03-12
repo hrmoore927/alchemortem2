@@ -21,6 +21,11 @@ class ProductController extends Controller
         return view('shop.products')->with('products', $products);
     }
     
+    public function showProduct($id) {
+        $product = Product::where('id', $id)->firstOrFail();
+        return view('shop.item')->with('product', $product);
+    }
+    
     // add selected item to cart
     public function getAddToCart(Request $request, $id) {
         $product = Product::find($id);
@@ -70,12 +75,12 @@ class ProductController extends Controller
             ));
             $order = new Order();
             $order->cart = serialize($cart);
-            $order->name = $request->input('name');
-            $order->line1 = $request->input('line1');
-            $order->line2 = $request->input('line2');
-            $order->city = $request->input('city');
-            $order->state = $request->input('state');
-            $order->zip = $request->input('zip');
+            $order->custName = $request->input('name');
+            $order->shipLine1 = $request->input('line1');
+            $order->shipLine2 = $request->input('line2');
+            $order->shipCity = $request->input('city');
+            $order->shipstate = $request->input('state');
+            $order->shipZip = $request->input('zip');
             $order->payment_id = $charge->id;
             
             Auth::user()->orders()->save($order); // come back and fix this
