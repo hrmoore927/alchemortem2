@@ -24,7 +24,7 @@ ADMIN - Edit User - Alchemortem
           </div><br />
         @endif
         <div class="col-md-6 offset-md-3">
-            <form method="post" action="{{action('UserController@updateUser', $id)}}" >
+            <form method="post" action="{{action('UserController@updateUser', $id)}}" id="editUser">
                 {{csrf_field()}}
                 {{ method_field('PATCH') }}
                 <input name="_method" type="hidden" value="PATCH">
@@ -42,8 +42,11 @@ ADMIN - Edit User - Alchemortem
                     <input type="text" class="form-control" name="email" value={{$user->email}} />
                 </div>
                 <div class="form-group">
-                    <label for="role">Role</label>
-                    <input type="text" class="form-control" name="role" value={{$user->role}} />
+                    User role<br>
+                    <select name="role" id="role" form="editUser">
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>
