@@ -24,7 +24,13 @@ Cart - Alchemortem
                             <td>{{ $product['item']['productName'] }}</td>
                             <td>{{ $product['qty'] }}</td>
                             <td>${{ $product['price'] }}</td>
-                            <td>Delete product</td>
+                            <td>
+                                <form action="{{ route('remove.item',  $product['item']) }}" method="POST">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <button type="submit">Remove</button>
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

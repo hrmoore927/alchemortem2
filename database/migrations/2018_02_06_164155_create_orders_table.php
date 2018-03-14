@@ -19,12 +19,17 @@ class CreateOrdersTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('custName');
-            $table->string('address');
+            $table->text('shipLine1');
+            $table->text('shipLine2')->nullable();
+            $table->text('shipCity');
+            $table->text('shipState');
+            $table->text('shipZip');
             $table->timestamp('orderDate')->index('orderDate');
-            $table->date('shipDate')->nullable;
+            $table->date('shipDate')->nullable();
             $table->string('orderStatus')->default('paid');
-            $table->string('cart');
-            $table->integer('payment_id');
+            $table->text('cart');
+            $table->string('payment_id');
+            $table->timestamps();
         });
         
         Schema::enableForeignKeyConstraints();

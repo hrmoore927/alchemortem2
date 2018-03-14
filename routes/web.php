@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function() {
     // checkout 
     Route::get('/checkout', 'ProductController@getCheckout')->name('checkout');
     Route::post('/checkout', 'ProductController@postCheckout');
+    Route::get('/successful-checkout', 'ProductController@successfulCheckout')->name('successful-checkout');
     });
 
 // add to cart
@@ -48,6 +49,8 @@ Route::get('/add-to-cart/{id}', 'ProductController@getAddToCart')->name('add-to-
 
 // view cart
 Route::get('/cart', 'ProductController@getCart')->name('cart');
+
+Route::delete('/cart/{product}', 'ProductController@removeFromCart')->name('remove.item');
 
 // FAQ
 Route::get('/faq', function () {

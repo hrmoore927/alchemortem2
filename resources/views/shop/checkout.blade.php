@@ -13,28 +13,28 @@ Checkout - Alchemortem
             <h3>Your total: ${{ $total }}</h3>
             <form action="{{ route('checkout') }}" method="post" id="checkout-form">
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" class="form-control" name="name" required>
+                            <label for="custName">Name</label>
+                            <input type="text" id="custName" class="form-control" name="custName" required>
                         </div>
                         <div class="form-group">
-                            <label for="line1">Shipping Address Line 1</label>
-                            <input type="text" id="line1" class="form-control" name="address" required>
+                            <label for="shipLine1">Shipping Address Line 1</label>
+                            <input type="text" id="shipLine1" class="form-control" name="shipLine1" required>
                         </div>
                         <div class="form-group">
-                            <label for="line2">Shipping Address Line 2 (Optional)</label>
-                            <input type="text" id="line2" class="form-control" name="line2">
+                            <label for="shipLine2">Shipping Address Line 2 (Optional)</label>
+                            <input type="text" id="shipLine2" class="form-control" name="shipLine2">
                         </div>
                         <div class="form-group">
-                            <label for="city">Shipping City</label>
-                            <input type="text" id="city" class="form-control" name="city" required>
+                            <label for="shipCity">Shipping City</label>
+                            <input type="text" id="shipCity" class="form-control" name="shipCity" required>
                         </div>
                         <div class="form-group">
-                            <label for="state">Shipping State</label>
-                            <input type="text" id="state" class="form-control" name="state" required>
+                            <label for="shipState">Shipping State</label>
+                            <input type="text" id="shipState" class="form-control" name="shipState" required>
                         </div>
                         <div class="form-group">
-                            <label for="zip">Shipping Zip Code</label>
-                            <input type="text" id="zip" class="form-control" name="zip" required>
+                            <label for="shipZip">Shipping Zip Code</label>
+                            <input type="text" id="shipZip" class="form-control" name="shipZip" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>

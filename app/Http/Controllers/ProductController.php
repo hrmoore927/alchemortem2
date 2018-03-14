@@ -12,6 +12,7 @@ use Auth;
 use App\Http\Requests;
 use Stripe\Charge;
 use Stripe\Stripe;
+use ShoppingCart;
 
 class ProductController extends Controller
 {
@@ -21,6 +22,7 @@ class ProductController extends Controller
         return view('shop.products')->with('products', $products);
     }
     
+    // show view for selected product details
     public function showProduct($id) {
         $product = Product::where('id', $id)->firstOrFail();
         return view('shop.item')->with('product', $product);
@@ -45,6 +47,14 @@ class ProductController extends Controller
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         return view('shop.cart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+    }
+    
+    public function removeFromCart(Request $request, $id) {
+        $cart = Session::get('cart');
+        Session::pull('item');
+        unset($cart->items[$id]);
+        Session::put('cart', $cart); // why is this not updating
+        return back();
     }
     
     // get the checkout view with cart info
@@ -73,23 +83,28 @@ class ProductController extends Controller
                 "source" => $request->input('stripeToken'), // obtained with Stripe.js
                 "description" => "Test charge"
             ));
-            $order = new Order();
-            $order->cart = serialize($cart);
-            $order->custName = $request->input('name');
-            $order->shipLine1 = $request->input('line1');
-            $order->shipLine2 = $request->input('line2');
-            $order->shipCity = $request->input('city');
-            $order->shipstate = $request->input('state');
-            $order->shipZip = $request->input('zip');
-            $order->payment_id = $charge->id;
-            
-            Auth::user()->orders()->save($order); // come back and fix this
-        } catch (\Exception $e) {
-            return redirect()->route('checkout')->with('card-error', $e->getMessage());
+            $order = new Order([
+                'cart' => serialize($cart),
+                'custName' => $request->input('custName'),
+                'shipLine1' => $request->input('shipLine1'),
+                'shipLine2' => $request->input('shipLine2'),
+                'shipCity' => $request->input('shipCity'),
+                'shipState' => $request->input('shipState'),
+                'shipZip' => $request->input('shipZip'),
+                'payment_id' => $charge->id
+            ]);
+            Auth::user()->orders()->save($order);
+        } 
+        catch (Exception $e) {
+            return redirect()->route('checkout');
         }
         
         Session::forget('cart');
-        return redirect()->route('index')->with('success', 'Successful purchase.');
+        return redirect()->route('successful-checkout');
+    }
+    
+    public function successfulCheckout() {
+        return view ('shop.successful-checkout');
     }
     
     // admin functions
