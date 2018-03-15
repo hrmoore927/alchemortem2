@@ -24,13 +24,18 @@ Cart - Alchemortem
                             <td>{{ $product['item']['productName'] }}</td>
                             <td>{{ $product['qty'] }}</td>
                             <td>${{ $product['price'] }}</td>
-                            <td>
-                                <form action="{{ route('remove.item',  $product['item']) }}" method="POST">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                    <button type="submit">Remove</button>
-                                </form>
-                            </td>
+                            <td><ul>
+                                <li><a href="{{ route('reduce', [
+                                'id' => $product['item']['id']
+                            ]) }}">Reduce by one</a></li>
+                                <li><a href="{{ route('increase', [
+                                'id' => $product['item']['id']
+                            ]) }}">Increase by one</a></li>
+                                <li><a href="{{ route('remove', [
+                                'id' => $product['item']['id']
+                            ]) }}">Remove item</a></li>
+                            </ul>
+                            <td></td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -46,7 +51,7 @@ Cart - Alchemortem
         <hr>
         <div class="row">
             <div class="col-sm-6 offset-sm-9 col-md-6 offset-md-11">
-                <a href="{{ route('checkout') }}" class="btn btn-success" type="button">Checkout</a>
+                <a href="{{ route('checkout') }}" class="btn btn-success">Checkout</a>
             </div>
         </div>
     @else

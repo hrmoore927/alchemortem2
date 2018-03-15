@@ -39,6 +39,39 @@ class ProductController extends Controller
         return redirect()->route('shop.products');
     }
     
+    public function getReduceByOne($id) {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->reduceByOne($id);
+        
+        Session::put('cart', $cart);
+        return redirect()->route('cart');
+    }
+    
+    public function getIncreaseByOne($id) {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->increaseByOne($id);
+        
+        Session::put('cart', $cart);
+        return redirect()->route('cart');
+    }
+    
+    public function getRemoveItem($id) {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->removeItem($id);
+        
+        if (count($cart->items) > 0) {
+            Session::put('cart', $cart);
+        } else {
+            Session::forget('cart');
+        }
+        
+        
+        return redirect()->route('cart');
+    }
+    
     // show cart view with item info
     public function getCart() {
         if (!Session::has('cart')) {
@@ -47,14 +80,6 @@ class ProductController extends Controller
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         return view('shop.cart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
-    }
-    
-    public function removeFromCart(Request $request, $id) {
-        $cart = Session::get('cart');
-        Session::pull('item');
-        unset($cart->items[$id]);
-        Session::put('cart', $cart); // why is this not updating
-        return back();
     }
     
     // get the checkout view with cart info

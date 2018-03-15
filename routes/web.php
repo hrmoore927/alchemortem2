@@ -49,10 +49,16 @@ Route::group(['middleware' => 'auth'], function() {
 // add to cart
 Route::get('/add-to-cart/{id}', 'ProductController@getAddToCart')->name('add-to-cart');
 
+Route::get('/reduce/{id}', 'ProductController@getReduceByOne')->name('reduce');
+
+Route::get('/increase/{id}', 'ProductController@getIncreaseByOne')->name('increase');
+
+Route::get('/remove/{id}', 'ProductController@getRemoveItem')->name('remove');
+
 // view cart
 Route::get('/cart', 'ProductController@getCart')->name('cart');
 
-Route::delete('/cart/{product}', 'ProductController@removeFromCart')->name('remove.item');
+//Route::delete('/cart/{product}', 'ProductController@removeFromCart')->name('remove.item');
 
 // FAQ
 Route::get('/faq', function () {
