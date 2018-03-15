@@ -35,6 +35,8 @@ Route::group(['middleware' => 'auth'], function() {
     // user account
     Route::get('/my-account', 'UserController@getAccount')->name('my-account');
     
+    Route::get('/user-orders', 'UserController@getAccountOrders')->name('user-orders');
+    
     //user logout
     Route::get('/logout', 'UserController@getLogout')->name('logout');
     

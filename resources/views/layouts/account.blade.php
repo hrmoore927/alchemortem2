@@ -15,12 +15,12 @@ Alchemortem - My Account
                     <a class="nav-link" href="#">Account Info</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Orders</a>
+                    <a class="nav-link" href="{{ route('user-orders') }}">Orders</a>
                 </li>
             </ul>
         </div>
         <div class="col-md-9">
-            <h1>'s Account</h1>
+            @yield('account-content')
         </div>
     </div>
     
