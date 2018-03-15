@@ -69,12 +69,8 @@ class UserController extends Controller
     
     // user account view
     public function getAccount() {
-        $orders = Auth::user()->orders;
-        $orders->transform(function($order, $key) {
-            $order->cart = unserialize($order->cart);
-            return $order;
-        });
-        return view('layouts.account', ['orders' => $orders]);
+//        $user = Auth::user();
+        return view('user.user-info');
     }
     
     public function getAccountOrders() {

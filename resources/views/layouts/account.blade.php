@@ -12,7 +12,7 @@ Alchemortem - My Account
         <div class="col-md-3">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Account Info</a>
+                    <a class="nav-link" href="{{ route('my-account')}}">Account Info</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('user-orders') }}">Orders</a>

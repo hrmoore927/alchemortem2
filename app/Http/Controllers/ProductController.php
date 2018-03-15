@@ -44,7 +44,11 @@ class ProductController extends Controller
         $cart = new Cart($oldCart);
         $cart->reduceByOne($id);
         
-        Session::put('cart', $cart);
+        if (count($cart->items) > 0) {
+            Session::put('cart', $cart);
+        } else {
+            Session::forget('cart');
+        }
         return redirect()->route('cart');
     }
     
@@ -67,7 +71,6 @@ class ProductController extends Controller
         } else {
             Session::forget('cart');
         }
-        
         
         return redirect()->route('cart');
     }
