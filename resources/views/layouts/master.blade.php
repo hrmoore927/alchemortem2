@@ -11,12 +11,7 @@
 <body>
     <div class="container-fluid header">
         <div class="row">
-            <div class="col-lg-12">
-                <form class="form-inline" id="search">
-                    <input class="form-control searchInput" type="search" placeholder="Search" aria-label="Search">
-                    <button type="submit"><i class="fas fa-search"></i></button>
-                </form>
-            </div>
+            <div class="col-lg-12"></div>
         </div>
     </div>
     <div class="container-fluid masthead bg-light">

@@ -22,9 +22,9 @@ ADMIN - Edit Product - Alchemortem
           <div class="alert alert-success">
               <p>{{ \Session::get('success') }}</p>
           </div><br />
-          @endif
+        @endif
         <div class="col-md-8 offset-md-2">
-            <form method="post" id="editProduct" action="{{action('ProductController@updateProduct', $id)}}" >
+            <form method="post" id="editProduct" action="{{ action('ProductController@updateProduct', $id) }}" >
                 {{csrf_field()}}
                 {{ method_field('PATCH') }}
                 <input name="_method" type="hidden" value="PATCH">

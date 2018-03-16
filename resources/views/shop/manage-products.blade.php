@@ -17,6 +17,20 @@ ADMIN - Manage Products - Alchemortem
             </div>
         @endif
         <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Images</th>
+                    <th>Desc</th>
+                    <th>Mat</th>
+                    <th>Dim</th>
+                    <th>Cat</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th colspan="2">Action</th>
+                </tr>
+            </thead>
             <tbody>
                 @foreach($products as $product)
                     <tr>

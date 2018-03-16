@@ -58,8 +58,6 @@ Route::get('/remove/{id}', 'ProductController@getRemoveItem')->name('remove');
 // view cart
 Route::get('/cart', 'ProductController@getCart')->name('cart');
 
-//Route::delete('/cart/{product}', 'ProductController@removeFromCart')->name('remove.item');
-
 // FAQ
 Route::get('/faq', function () {
     return view('partials.faq');
@@ -86,3 +84,4 @@ Route::patch('/manage-product/{id}', 'ProductController@updateProduct');
 Route::get('/delete-product/{id}', 'ProductController@deleteProduct')->name('delete-product');
 
 Route::get('/manage-orders', 'ProductController@getAllOrders')->name('manage-orders');
+Route::patch('/manage-orders/{id}', 'ProductController@updateOrderStatus')->name('update-order');

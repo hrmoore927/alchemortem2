@@ -231,4 +231,11 @@ class ProductController extends Controller
         });
         return view('shop.manage-orders', ['orders' => $orders]);
     }
+    
+    public function updateOrderStatus(Request $request, $id) {
+        $order = Order::find($id);
+        $order->orderStatus = $request->input('orderStatus');
+        $order->save();
+        return redirect('manage-orders')->with('success', 'Order status has been updated!');
+    }
 }
