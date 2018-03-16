@@ -18,12 +18,12 @@ class CreateOrdersTable extends Migration
             $table->increments('order_id')->autoIncrement();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('custName');
             $table->text('shipLine1');
             $table->text('shipLine2')->nullable();
             $table->text('shipCity');
             $table->text('shipState');
             $table->text('shipZip');
+            $table->string('custName');
             $table->timestamp('orderDate')->index('orderDate');
             $table->date('shipDate')->nullable();
             $table->string('orderStatus')->default('paid');

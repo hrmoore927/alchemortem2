@@ -82,5 +82,7 @@ Route::post('/add-product', 'ProductController@postAddProduct');
 // edit a product
 Route::get('/manage-product/{id}', 'ProductController@editProduct')->name('edit-product');
 Route::patch('/manage-product/{id}', 'ProductController@updateProduct');
-//delete user
+//delete product
 Route::get('/delete-product/{id}', 'ProductController@deleteProduct')->name('delete-product');
+
+Route::get('/manage-orders', 'ProductController@getAllOrders')->name('manage-orders');

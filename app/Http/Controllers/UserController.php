@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Shipping;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -25,12 +26,23 @@ class UserController extends Controller
             'password' => 'required|min:4'
         ]);
         
+//        $shipping = new Shipping([
+//            'shipLine1' => $request->input('shipLine1'),
+//            'shipLine2' => $request->input('shipLine2'),
+//            'shipCity' => $request->input('shipCity'),
+//            'shipState' => $request->input('shipState'),
+//            'shipZip' => $request->input('shipZip')
+//            ]);
+//        $shipping->save();
+        
         $user = new User([
             'fName' => $request->input('fName'),
             'lName' => $request->input('lName'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password'))
+//            'ship_id' => $shipping->id
         ]);
+//        $shipping->user()->save($user);
         $user->save();
         
         Auth::login($user);
@@ -88,6 +100,7 @@ class UserController extends Controller
         return redirect()->route('index');
     }
     
+    // ADMIN ONLY
     // display all users for admin
     public function getUsers() {
         $users = User::all();

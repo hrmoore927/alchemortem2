@@ -13,9 +13,10 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
-        'App\User' => 'App\Policies\UserPolicy',
-        'App\User' => 'App\Policies\ProductPolicy',
+//        'App\Model' => 'App\Policies\ModelPolicy',
+        User::class => UserPolicy::class,
+        Product::class => ProductPolicy::class,
+        Order::class => OrderPolicy::class
     ];
 
     /**
@@ -27,6 +28,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::resource('products', 'ProductPolicy');
+        Gate::resource('users', 'UserPolicy');
+        Gate::resource('orders', 'OrderPolicy');
     }
 }

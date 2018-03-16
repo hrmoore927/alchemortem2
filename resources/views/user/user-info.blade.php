@@ -13,8 +13,8 @@
                 <td>{{ Auth::user()->email }}</td>
             </tr>
             <tr>
-                <th scope="row">Shipping Address</th>
-                <td></td>
+                <th scope="row">Role</th>
+                <td>{{ Auth::user()->role }}</td>
             </tr>
         </tbody>
     </table>

@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('role')->default('user');
+//            $table->integer('ship_id')->unsigned();
+//            $table->foreign('ship_id')->references('id')->on('shippings');
             $table->rememberToken();
             $table->timestamps();
         });

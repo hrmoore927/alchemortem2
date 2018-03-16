@@ -17,9 +17,9 @@ class ProductPolicy
      * @param  \App\Product  $product
      * @return mixed
      */
-    public function view(User $user, Product $product)
+    public function view(User $user)
     {
-        //
+        return $user->role == 'admin';
     }
 
     /**
@@ -30,7 +30,7 @@ class ProductPolicy
      */
     public function create(User $user)
     {
-        return $user->role = 'admin';
+        return $user->role == 'admin';
     }
 
     /**
@@ -40,9 +40,9 @@ class ProductPolicy
      * @param  \App\Product  $product
      * @return mixed
      */
-    public function update(User $user, Product $product)
+    public function update(User $user)
     {
-        return $user->role = 'admin';
+        return $user->role == 'admin';
     }
 
     /**
@@ -52,8 +52,8 @@ class ProductPolicy
      * @param  \App\Product  $product
      * @return mixed
      */
-    public function delete(User $user, Product $product)
+    public function delete(User $user)
     {
-        return $user->role = 'admin';
+        return $user->role == 'admin';
     }
 }

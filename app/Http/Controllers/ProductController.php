@@ -111,6 +111,7 @@ class ProductController extends Controller
                 "source" => $request->input('stripeToken'), // obtained with Stripe.js
                 "description" => "Test charge"
             ));
+            
             $order = new Order([
                 'cart' => serialize($cart),
                 'custName' => $request->input('custName'),
@@ -135,7 +136,7 @@ class ProductController extends Controller
         return view ('shop.successful-checkout');
     }
     
-    // admin functions
+    // ADMIN ONLY
     // add a product view
     public function getProductForm() {
         return view ('shop.add-product');
@@ -220,5 +221,14 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->delete();
         return redirect('manage-products')->with('success', 'Product has been deleted');
+    }
+    
+    public function getAllOrders() {
+        $orders = Order::all();
+        $orders->transform(function($order, $key) {
+            $order->cart = unserialize($order->cart);
+            return $order;
+        });
+        return view('shop.manage-orders', ['orders' => $orders]);
     }
 }

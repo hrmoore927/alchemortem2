@@ -28,6 +28,28 @@ Sign Up - Alchemortem
                 <label for="lName">Last Name:</label>
                 <input type="text" id="lName" name="lName" class="form-control">
             </div>
+<!--
+            <div class="form-group">
+                <label for="shipLine1">Shipping Address Line 1:</label>
+                <input type="text" id="shipLine1" name="shipLine1" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="shipLine2">Shipping Address Line 2:</label>
+                <input type="text" id="shipLine2" name="shipLine2" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="shipCity">Shipping City:</label>
+                <input type="text" id="shipCity" name="shipCity" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="shipState">Shipping State:</label>
+                <input type="text" id="shipState" name="shipState" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="shipZip">Shipping Zip Code:</label>
+                <input type="text" id="shipZip" name="shipZip" class="form-control">
+            </div>
+-->
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="text" id="email" name="email" class="form-control">
