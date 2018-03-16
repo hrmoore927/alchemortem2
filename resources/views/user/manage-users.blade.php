@@ -1,13 +1,13 @@
-@extends('layouts.master')
+@extends('layouts.account')
 
 @section('title')
 ADMIN - Manage Users - Alchemortem
 @endsection
 
-@section('content')
+@section('account-content')
 <div class="row">
     <div class="col-md-12">
-        <h1>ADMIN - Manage Users</h1>
+        <h2>ADMIN - Manage Users</h2>
         @if(Session::has('success'))
             <div class="alert alert-success">
                 {{ Session::get('success') }}

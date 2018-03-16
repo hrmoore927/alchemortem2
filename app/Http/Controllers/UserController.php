@@ -81,8 +81,8 @@ class UserController extends Controller
     
     // user account view
     public function getAccount() {
-//        $user = Auth::user();
-        return view('user.user-info');
+        $user = Auth::user();
+        return view('user.user-info')->with('user', $user);
     }
     
     public function getAccountOrders() {
