@@ -112,6 +112,11 @@ class ProductController extends Controller
                 "description" => "Test charge"
             ));
             
+//            $customer = Customer::create(array(
+//                "customer" => $request->input('name'),
+//                "email" => $request->input('email')
+//            ));
+            
             $order = new Order([
                 'cart' => serialize($cart),
                 'custName' => $request->input('custName'),

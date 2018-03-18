@@ -85,6 +85,25 @@ class UserController extends Controller
         return view('user.user-info')->with('user', $user);
     }
     
+    public function editInfo($id) {
+        $user = User::find($id);
+        return view('user.edit-info', compact('user', 'id'));
+    }
+    
+    public function updateInfo(Request $request, $id) {
+        $user = User::find($id);
+        $this->validate(request(), [
+            'fName' => 'required',
+            'lName' => 'required',
+            'email' => 'email|required'
+        ]);
+        $user->fName = $request->input('fName');
+        $user->lName = $request->input('lName');
+        $user->email = $request->input('email');
+        $user->save();
+        return redirect('my-account')->with('success', 'Account infomation has been updated!');
+    }
+    
     public function getAccountOrders() {
         $orders = Auth::user()->orders;
         $orders->transform(function($order, $key) {

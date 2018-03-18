@@ -18,9 +18,11 @@ Alchemortem - My Account
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('manage-users')}}">Show All Users</a>
                     </li>
-                
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('manage-products')}}">Show All Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('add-product')}}">Add A Product</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('manage-orders') }}">Show All Orders</a>

@@ -35,6 +35,9 @@ Route::group(['middleware' => 'auth'], function() {
     // user account
     Route::get('/my-account', 'UserController@getAccount')->name('my-account');
     
+    Route::get('edit-info/{id}', 'UserController@editInfo')->name('edit-info');
+    Route::patch('/edit-info/{id}', 'UserController@updateInfo');
+    
     Route::get('/user-orders', 'UserController@getAccountOrders')->name('user-orders');
     
     //user logout
@@ -83,5 +86,7 @@ Route::patch('/manage-product/{id}', 'ProductController@updateProduct');
 //delete product
 Route::get('/delete-product/{id}', 'ProductController@deleteProduct')->name('delete-product');
 
+// show all orders
 Route::get('/manage-orders', 'ProductController@getAllOrders')->name('manage-orders');
+// update order status
 Route::patch('/manage-orders/{id}', 'ProductController@updateOrderStatus')->name('update-order');

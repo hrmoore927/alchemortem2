@@ -225,3 +225,7 @@ h2 {
 .singleItem img {
     height: 225px;
 }
+
+#add-product input {
+    width: 600px;
+}
