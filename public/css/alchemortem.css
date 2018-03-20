@@ -1,3 +1,4 @@
+/* begin css reset */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -45,6 +46,7 @@ table {
 
 /* end css reset */
 
+/* custom fonts */
 @font-face {
     font-family: 'Lato Light';
     src: url('../fonts/Lato/Lato-Light.ttf');
@@ -60,23 +62,35 @@ table {
     src: url('../fonts/Lato/Lato-Bold.ttf');
 }
 
+/******************** MASTER TEMPLATE *******************/
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body {
     box-sizing: border-box;
     font-family: 'Lato Regular', 'Arial', sans-serif;
     font-size: 16px;
     background-color: #eaeaea;
     overflow-x: hidden;
+    margin-bottom: 60px;
 }
 
+/* header area */
 .header {
     width: 100%;
     background-color: #333;
     height: 50px;
 }
 
-.masthead {
+.masthead, .footer {
     border-bottom: 1px solid #e5e5e5;
     width: 100%;
+}
+
+.masthead {
     margin-bottom: 20px;
 }
 
@@ -101,68 +115,6 @@ nav, .main {
 
 .badge-secondary {
     margin-left: 5px;
-}
-
-.welcome {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-h1 {
-    font-size: 40px;
-    padding-top: 30px;
-    padding-bottom: 15px;
-    color: #666;
-}
-
-.welcome p {
-    font-family: 'Lato Light';
-    font-size: 16px;
-}
-
-.footer {
-    height: 100%; /* footer needs to go all the way to bottom */
-    margin-top: 20px;
-    padding-bottom: 20px;
-}
-
-.footer p {
-    text-align: center;
-    padding-top: 10px;
-}
-
-.products {
-    margin: 10px 0;
-}
-
-.card {
-    width: 250px;
-    height: 315px;
-    margin: 10px 0;
-}
-
-.card img {
-    height: 200px;
-}
-
-.card-title {
-    font-family: 'Lato Bold';
-}
-
-.price {
-    padding-top: 10px;
-}
-
-.add {
-    float: right;
-    margin-top: -10px;
-}
-
-h2 {
-    font-size: 25px;
-    padding-bottom: 10px;
-    color: #666;
 }
 
 .login p {
@@ -192,18 +144,120 @@ h2 {
     text-align: center;
 }
 
-.signUpLink {
-    color: #1f1fff;
-    text-align: center;
-}
-
-.signup form {
+.footer {
     margin-top: 20px;
+    padding-bottom: 20px;
+    position: absolute;
+    bottom: 0;
 }
 
-.managePhotos img {
-    max-width: 50px;
+.footer p {
+    text-align: center;
+    padding-top: 10px;
 }
+
+/******************** INDEX BLADE ********************/
+
+.welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 40px;
+    padding-top: 30px;
+    padding-bottom: 15px;
+    color: #666;
+}
+
+.welcome p {
+    font-family: 'Lato Light';
+    font-size: 16px;
+}
+
+/******************** SHOP BLADE ********************/
+
+.products {
+    margin: 10px 0;
+}
+
+#card-element {
+    background-color: #fff;
+    border: 1px solid #c6c6c6;
+    border-radius: 3px;
+    padding: 10px 0;
+}
+
+.card {
+    width: 250px;
+    height: 315px;
+    margin: 10px 0;
+    position: relative;
+}
+
+.card img {
+    height: 200px;
+}
+
+.card-title {
+    font-family: 'Lato Bold';
+}
+
+.price {
+    padding-top: 10px;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 10px;
+}
+
+.add {
+    float: right;
+    margin-top: -25px;
+    margin-left: 100px;
+}
+
+/******************** SINGLE ITEM BLADE *****************/
+
+.itemInfo p {
+    padding-bottom: 10px;
+}
+
+.singleItem img {
+    height: 225px;
+}
+
+.bold {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#addToCart {
+    margin-left: 25px;
+}
+
+/******************** CART BLADE ********************/
+
+thead {
+    padding-right: 50px; /* need to fix this */
+}
+
+#quantity {
+    padding-left: 40px;
+}
+
+/******************** CHECKOUT BLADE *****************/
+
+#checkout-form {
+    padding-top: 30px;
+}
+
+#checkout-form label, #add-product label {
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+
+/******************** FAQ BLADE *****************/
 
 .faq h3 {
     font-size: 25px;
@@ -215,17 +269,62 @@ h2 {
     padding-bottom: 10px;
 }
 
-#card-element {
-    background-color: #fff;
-    border: 1px solid #c6c6c6;
-    border-radius: 3px;
-    padding: 10px 0;
+/******************** ACCOUNT INFO BLADE *****************/
+
+h2 {
+    font-size: 25px;
+    padding-bottom: 10px;
+    color: #666;
 }
 
-.singleItem img {
-    height: 225px;
+/*************** SIGN UP BLADE *************/
+
+/*************** SIGN IN BLADE *************/
+
+.signUpLink {
+    color: #1f1fff;
+    text-align: center;
 }
+
+.signup form {
+    margin-top: 20px;
+}
+
+/******************** USER ORDERS BLADE *****************/
+
+/******************** ADMIN VIEWS *****************/
+
+/*************** SHOW ALL USERS BLADE *************/
+
+/*************** SHOW ALL PRODUCTS BLADE *************/
+
+.managePhotos img {
+    max-width: 50px;
+}
+
+/*************** ADD PRODUCT BLADE *************/
 
 #add-product input {
     width: 600px;
+}
+
+/*************** SHOW ALL ORDERS BLADE *************/
+
+.panel {
+    padding: 20px;
+    border: 1px solid rgba(95, 95, 95, .5);
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+#allOrders p {
+    padding-bottom: 5px;
+}
+
+#allOrders button {
+    margin-left: 15px;
+}
+
+.panel-footer {
+    padding-top: 15px;
 }

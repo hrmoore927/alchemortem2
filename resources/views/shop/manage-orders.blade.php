@@ -13,10 +13,11 @@ ADMIN - Manage Orders - Alchemortem
 @endif
 @foreach($orders as $order)
         <div class="panel panel-default">
-            <div class="panel-body">
-                <ul class="list-group">
-                    Order #: {{ $order->id }} | Status: {{ $order->orderStatus }}
-                    <form action="{{ action('ProductController@updateOrderStatus', $order->id) }}" method="post" id="updateOrderStatus">
+            <div class="panel-body" id="allOrders">
+                <p><span class="bold">Order #:</span> {{ $order->id }} | <span class="bold">Status:</span> {{ $order->orderStatus }}</p>
+                <p><span class="bold">Customer:</span> {{ $order->custName}}</p>
+                <p><span class="bold">Shipping Address:</span> {{ $order->shipLine1}} {{ $order->shipLine2 }} {{ $order->shipCity }}, {{ $order->shipState }} {{ $order->shipZip }}</p>
+                <form action="{{ action('ProductController@updateOrderStatus', $order->id) }}" method="post" id="updateOrderStatus">
                         {{ csrf_field() }}
                         {{ method_field('PATCH') }}
                         <input type="hidden" name="_method" value="PATCH">
@@ -30,6 +31,7 @@ ADMIN - Manage Orders - Alchemortem
                         </div>
                         
                     </form>
+                <ul class="list-group">
                     @foreach($order->cart->items as $item)
                     <li class="list-group-item">
                         {{ $item['item']['productName'] }} | Qty: {{ $item['qty'] }}
@@ -39,7 +41,7 @@ ADMIN - Manage Orders - Alchemortem
                 </ul> 
             </div>
             <div class="panel-footer">
-                <strong>Total Price: ${{ $order->cart->totalPrice }}</strong>
+                <strong class="bold">Total Price: ${{ $order->cart->totalPrice }}</strong>
             </div>
         </div>
     @endforeach

@@ -12,17 +12,17 @@ Cart - Alchemortem
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
-                          <th>Product Name</th>
-                          <th>Quantity</th>
-                          <th>Price</th>
-                          <th>Action</th>
+                          <th scope="col">Product Name</th>
+                          <th scope="col">Quantity</th>
+                          <th scope="col">Price</th>
+                          <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($products as $product)
                         <tr>
                             <td>{{ $product['item']['productName'] }}</td>
-                            <td>{{ $product['qty'] }}</td>
+                            <td id="quantity">{{ $product['qty'] }}</td>
                             <td>${{ $product['price'] }}</td>
                             <td><ul>
                                 <li><a href="{{ route('reduce', [
@@ -45,7 +45,7 @@ Cart - Alchemortem
         <hr>
         <div class="row">
             <div class="col-sm-6 offset-sm-9 col-md-6 offset-md-11">
-                <strong>Total: ${{ $totalPrice }}</strong>
+                <strong class="bold">Total: ${{ $totalPrice }}</strong>
             </div>
         </div>
         <hr>
@@ -57,7 +57,8 @@ Cart - Alchemortem
     @else
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
-                <h2>No items in cart</h2>
+                <h1>No items in cart</h1>
+                <p>What are you waiting for? Checkout out some of <a href="{{ route('shop.products') }}">these awesome items!</a></p>
             </div>
         </div>
     @endif

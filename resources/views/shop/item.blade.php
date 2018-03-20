@@ -21,14 +21,14 @@
             <a href="{{ $product->image4 }}"><img src="{{ $product->image4 }}" alt="product image 4"></a>
         @endif
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 itemInfo">
         <p>{{ $product->description }}</p>
-        <p>Materials:</p>
+        <p class="bold">Materials:</p>
         <p>{{ $product->materials }}</p>
-        <p>Dimensions:</p>
+        <p class="bold">Dimensions:</p>
         <p>{{ $product->dimensions }}</p>
-        <p>{{ $product->price }}</p>
-        <a class="btn btn-primary" href="{{ route('add-to-cart', ['id' => $product->id]) }}">Add to cart</a>
+        <p class="bold">${{ $product->price }}</p>
+        <a class="btn btn-primary" id="addToCart" href="{{ route('add-to-cart', ['id' => $product->id]) }}">Add to cart</a>
     </div>
 </div>
 @endsection
