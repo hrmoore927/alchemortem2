@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
 
 class ResetPasswordController extends Controller
 {
@@ -19,13 +22,19 @@ class ResetPasswordController extends Controller
     */
 
     use ResetsPasswords;
+    
+    public function showResetForm(Request $request, $token = null) {
+        return view('auth.passwords.reset')->with(
+            ['token' => $token, 'email' => $request->email]
+        );
+    }
 
     /**
      * Where to redirect users after resetting their password.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/my-account';
 
     /**
      * Create a new controller instance.
@@ -36,4 +45,12 @@ class ResetPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+    
+    public function broker() {
+        return Password::broker('users');
+    }
+    
+//    public function guard() {
+//        return Auth::guard('web_user');
+//    }
 }

@@ -77,8 +77,8 @@
                                                 <button type="submit" class="btn btn-primary">Sign In</button>
                                                 {{ csrf_field() }}
                                             </form>
-                                            <p>Don't have an account?</p>
                                             <a class="dropdown-item signUpLink" href="{{ url('/signup') }}">Sign up here</a>
+                                            <a class="dropdown-item signUpLink" href="{{ url('/password/reset') }}">Forgot password</a>
                                         </div>
                                     @endif
                                 </li>

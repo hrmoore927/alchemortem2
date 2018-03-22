@@ -19,15 +19,25 @@ Route::get('/', function () {
 // products page
 Route::get('/shop-products', 'ProductController@getProducts')->name('shop.products');
 
+// individual item
 Route::get('/item/{id}', 'ProductController@showProduct')->name('show.product');
 
 // user sign up and sign in
 Route::group(['middleware' => 'guest'], function() {
+    // sign up
     Route::get('/signup', 'UserController@getSignup')->name('signup');
     Route::post('/signup', 'UserController@postSignup');
 
+    // sign in
     Route::get('/signin', 'UserController@getSignin')->name('signin');
     Route::post('/signin', 'UserController@postSignin');
+    
+    // forgot password
+    Route::get('/password/reset', 'Auth\ForgotPasswordController@requestForm')->name('password-reset');
+    Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLink')->name('reset-email');
+    // reset password
+    Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+    Route::post('/password/reset', 'Auth\ResetPasswordController@reset');
 });
 
 // user must be logged in for these views
@@ -90,3 +100,6 @@ Route::get('/delete-product/{id}', 'ProductController@deleteProduct')->name('del
 Route::get('/manage-orders', 'ProductController@getAllOrders')->name('manage-orders');
 // update order status
 Route::patch('/manage-orders/{id}', 'ProductController@updateOrderStatus')->name('update-order');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

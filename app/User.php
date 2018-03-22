@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -33,5 +34,9 @@ class User extends Authenticatable
     
     public function shipping() {
         return $this->hasMany('App\Shipping');
+    }
+    
+    public function sendPasswordResetNotification($token) {
+        $this->notify(new Notifications\UserResetPasswordNotification($token));
     }
 }

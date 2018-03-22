@@ -147,6 +147,7 @@ nav, .main {
 .signUpLink {
     color: #1f1fff;
     text-align: center;
+    padding-bottom: 10px;
 }
 
 .footer {
@@ -287,14 +288,18 @@ h2 {
     color: #666;
 }
 
-/*************** SIGN UP/SIGN IN BLADE *************/
+/****** SIGN UP/SIGN IN/RESET PASSWORD BLADE *******/
 
 .signUp form {
     margin-top: 20px;
 }
 
-.signUp p {
+.signUp p, .resetPassword p {
     padding-bottom: 15px;
+}
+
+#sendEmail label, .resetPassword label {
+    padding-bottom: 5px;
 }
 
 /******************** USER ORDERS BLADE *****************/
