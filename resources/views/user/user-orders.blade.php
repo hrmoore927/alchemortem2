@@ -2,12 +2,12 @@
 
 @section('account-content')
     <h2>My Orders</h2>
-    @if(count($orders) > 1)
+    @if(count($orders) >= 1)
         @foreach($orders as $order)
             <div class="panel panel-default">
                 <div class="panel-body">
+                    <p><span class="bold">Order Status:</span> {{ $order->orderStatus }}</p>
                     <ul class="list-group">
-                        Order Status: {{ $order->orderStatus }}
                         @foreach($order->cart->items as $item)
                         <li class="list-group-item">
                             {{ $item['item']['productName'] }} | Qty: {{ $item['qty'] }}

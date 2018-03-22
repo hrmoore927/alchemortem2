@@ -25,13 +25,13 @@ Cart - Alchemortem
                             <td id="quantity">{{ $product['qty'] }}</td>
                             <td>${{ $product['price'] }}</td>
                             <td><ul>
-                                <li><a href="{{ route('reduce', [
+                                <li class="cartQty"><a href="{{ route('reduce', [
                                 'id' => $product['item']['id']
                             ]) }}">Reduce by one</a></li>
-                                <li><a href="{{ route('increase', [
+                                <li class="cartQty"><a href="{{ route('increase', [
                                 'id' => $product['item']['id']
                             ]) }}">Increase by one</a></li>
-                                <li><a href="{{ route('remove', [
+                                <li class="cartQty"><a href="{{ route('remove', [
                                 'id' => $product['item']['id']
                             ]) }}">Remove item</a></li>
                             </ul>

@@ -7,6 +7,13 @@ Alchemortem
 @section('content')
 <div class="row">
     <div class="col-lg-6 col-md-12 welcome">
+        @if($errors->any())
+            <div class="alert alert-danger">
+                @foreach($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+            </div>
+        @endif
         @if(Session::has('success'))
         <div class="row">
             <div class="col-md-4">

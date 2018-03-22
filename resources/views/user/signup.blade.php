@@ -6,12 +6,12 @@ Sign Up - Alchemortem
    
 @section('content')
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 signUp">
         <h1>Sign Up</h1>
         <p>Customers must be logged in to purchase items. Don't have an account? No problem, you can sign up here!</p>
         <p>Already have an account? <a href="{{ route('signin') }}">Sign in</a></p>
     </div>
-    <div class="col-md-4 col-sm-12 .offset-md-4 signup">
+    <div class="col-md-4 col-sm-12 offset-md-4">
         @if(count($errors) > 0)
             <div class="alert alert-danger">
                 @foreach($errors->all() as $error)

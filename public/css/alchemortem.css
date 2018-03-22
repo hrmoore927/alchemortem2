@@ -144,6 +144,11 @@ nav, .main {
     text-align: center;
 }
 
+.signUpLink {
+    color: #1f1fff;
+    text-align: center;
+}
+
 .footer {
     margin-top: 20px;
     padding-bottom: 20px;
@@ -230,10 +235,11 @@ h1 {
 .bold {
     font-weight: bold;
     font-size: 18px;
+    color: #535353;
+    
 }
 
 #addToCart {
-    margin-left: 25px;
 }
 
 /******************** CART BLADE ********************/
@@ -244,6 +250,10 @@ thead {
 
 #quantity {
     padding-left: 40px;
+}
+
+.cartQty {
+    padding-bottom: 10px;
 }
 
 /******************** CHECKOUT BLADE *****************/
@@ -277,17 +287,14 @@ h2 {
     color: #666;
 }
 
-/*************** SIGN UP BLADE *************/
+/*************** SIGN UP/SIGN IN BLADE *************/
 
-/*************** SIGN IN BLADE *************/
-
-.signUpLink {
-    color: #1f1fff;
-    text-align: center;
+.signUp form {
+    margin-top: 20px;
 }
 
-.signup form {
-    margin-top: 20px;
+.signUp p {
+    padding-bottom: 15px;
 }
 
 /******************** USER ORDERS BLADE *****************/
@@ -317,7 +324,7 @@ h2 {
     margin-bottom: 20px;
 }
 
-#allOrders p {
+.panel-body p {
     padding-bottom: 5px;
 }
 

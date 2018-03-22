@@ -76,7 +76,7 @@ class UserController extends Controller
             }
             return redirect('my-account');
         }
-        return redirect()->back();
+        return redirect()->back()->withInput()->withErrors(['password' => 'Incorrect password.']);
     }
     
     // user account view
