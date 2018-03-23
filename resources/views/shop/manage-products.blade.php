@@ -28,7 +28,7 @@ ADMIN - Manage Products - Alchemortem
                     <th>Cat</th>
                     <th>Price</th>
                     <th>Status</th>
-                    <th colspan="2">Action</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,8 +43,16 @@ ADMIN - Manage Products - Alchemortem
                         <td>{{ $product->category }}</td>
                         <td>{{ $product->price }}</td>
                         <td>{{ $product->status }}</td>
-                        <td><a class="btn btn-primary" href="{{ route('edit-product', $product->id) }}">Edit</a></td>
-                        <td><a class="btn btn-danger" href="{{ route('delete-product', $product->id) }}">Delete</a></td>
+                        <td class="productAction">
+                            <ul>
+                                <li>
+                                    <a class="btn btn-primary" href="{{ route('edit-product', $product->id) }}">Edit</a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-danger" href="{{ route('delete-product', $product->id) }}">Delete</a>
+                                </li>
+                            </ul>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

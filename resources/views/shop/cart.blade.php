@@ -7,7 +7,7 @@ Cart - Alchemortem
 @section('content')
     @if(Session::has('cart'))
         <div class="row">
-            <div class="col-sm-6 col-md-12">
+            <div class="col-md-12">
                 <h1>Cart</h1>
                 <table class="table">
                     <thead class="thead-dark">
@@ -44,13 +44,13 @@ Cart - Alchemortem
         </div>
         <hr>
         <div class="row">
-            <div class="col-sm-6 offset-sm-9 col-md-6 offset-md-11">
+            <div class="offset-lg-10 col-md-6 offset-md-9">
                 <strong class="bold">Total: ${{ $totalPrice }}</strong>
             </div>
         </div>
         <hr>
         <div class="row">
-            <div class="col-sm-6 offset-sm-9 col-md-6 offset-md-11">
+            <div class="offset-lg-10 col-md-6 offset-md-9">
                 <a href="{{ route('checkout') }}" class="btn btn-success">Checkout</a>
             </div>
         </div>

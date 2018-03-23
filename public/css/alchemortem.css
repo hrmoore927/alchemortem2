@@ -95,7 +95,7 @@ body {
 }
 
 .logo img {
-    width: 350px;
+    width: 100%;
     margin-left: -30px;
 }
 
@@ -110,7 +110,7 @@ nav, .main {
 
 .navbar-toggler {
     float: right;
-    margin-top: -50px;
+    margin-top: 0;
 }
 
 .badge-secondary {
@@ -150,6 +150,7 @@ nav, .main {
     padding-bottom: 10px;
 }
 
+/* footer area */
 .footer {
     margin-top: 20px;
     padding-bottom: 20px;
@@ -180,6 +181,10 @@ h1 {
 .welcome p {
     font-family: 'Lato Light';
     font-size: 16px;
+}
+
+.carousel {
+    padding-top: 20px;
 }
 
 /******************** SHOP BLADE ********************/
@@ -240,13 +245,14 @@ h1 {
     
 }
 
-#addToCart {
+.singleItem {
+    padding-bottom: 20px;
 }
 
 /******************** CART BLADE ********************/
 
 thead {
-    padding-right: 50px; /* need to fix this */
+    margin-right: -10px;
 }
 
 #quantity {
@@ -305,6 +311,11 @@ h2 {
 /******************** USER ORDERS BLADE *****************/
 
 /******************** ADMIN VIEWS *****************/
+/******************** ACCOUNT TEMPLATE *****************/
+
+.accountMenu {
+    padding-bottom: 20px;
+}
 
 /*************** SHOW ALL USERS BLADE *************/
 
@@ -312,6 +323,12 @@ h2 {
 
 .managePhotos img {
     max-width: 50px;
+    padding-bottom: 5px;
+}
+
+.productAction li {
+    text-align: center;
+    padding-bottom: 20px;
 }
 
 /*************** ADD PRODUCT BLADE *************/

@@ -9,7 +9,7 @@ Alchemortem - My Account
         <div class="col-md-12">
             <h1>My Account</h1>
         </div>
-        <div class="col-md-3">
+        <div class="col-lg-3 col-md-12 accountMenu">
             <ul class="nav flex-column">
                 <li class="nav-item">
                         <a class="nav-link" href="{{ route('my-account')}}">Account Info</a>
@@ -35,7 +35,7 @@ Alchemortem - My Account
                 @endif    
             </ul>
         </div>
-        <div class="col-md-9">
+        <div class="col-lg-9 col-md-12">
             @yield('account-content')
         </div>
     </div>
