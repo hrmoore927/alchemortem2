@@ -308,6 +308,11 @@ h2 {
     padding-bottom: 5px;
 }
 
+#forgotPassword {
+    float: right;
+    margin-top: 10px;
+}
+
 /******************** USER ORDERS BLADE *****************/
 
 /******************** ADMIN VIEWS *****************/
