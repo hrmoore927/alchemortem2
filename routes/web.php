@@ -19,6 +19,8 @@ Route::get('/', function () {
 // products page
 Route::get('/shop-products', 'ProductController@getProducts')->name('shop.products');
 
+Route::post('/sort-by-price', 'ProductController@sortPrice')->name('sort.products');
+
 // individual item
 Route::get('/item/{id}', 'ProductController@showProduct')->name('show.product');
 

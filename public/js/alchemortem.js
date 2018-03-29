@@ -8,10 +8,10 @@ $('document').ready(function () {
 });
 
 function loadImages(){
-    var galleryImages = [];
+    var images = [];
 	var loadThese = $('img');
 	for(i=0; i<loadThese.length; i++){
-		galleryImages[i] = new Image();
-		galleryImages[i].src = loadThese[i];
+		images[i] = new Image();
+		images[i].src = loadThese[i];
 		}
 }

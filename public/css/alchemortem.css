@@ -96,12 +96,16 @@ body {
 
 .logo img {
     width: 100%;
-    margin-left: -30px;
+    margin-left: -20px;
 }
 
 nav, .main {
     margin-left: 5%;
     width: 90%;
+}
+
+nav {
+    margin-right: 6.3%;
 }
 
 .nav-item {
@@ -180,7 +184,7 @@ h1 {
 
 .welcome p {
     font-family: 'Lato Light';
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .carousel {
@@ -191,6 +195,16 @@ h1 {
 
 .products {
     margin: 10px 0;
+}
+
+#sortPrice {
+    float: right;
+    margin-right: 45px;
+    margin-top: 50px;
+}
+
+#sortPrice button {
+    margin-left: 10px;
 }
 
 #card-element {

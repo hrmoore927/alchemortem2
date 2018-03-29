@@ -13,6 +13,7 @@ use App\Http\Requests;
 use Stripe\Charge;
 use Stripe\Stripe;
 use ShoppingCart;
+use App\Mail\OrderReceived;
 
 class ProductController extends Controller
 {
@@ -28,6 +29,20 @@ class ProductController extends Controller
         return view('shop.item')->with('product', $product);
     }
     
+    public function sortPrice(Request $request) {
+        $value = $request->input('sortPrice');
+        if ($value == 'asc') {
+            $products = Product::where('status', '=', 'available')->orderBy('price', 'ASC')->get();
+            $sorted = $products->sortBy('price');
+            $sorted->values()->all(); 
+        } else {
+            $products = Product::where('status', '=', 'available')->orderBy('price', 'DESC')->get();
+            $sorted = $products->sortByDesc('price');
+            $sorted->values()->all();
+        }
+        return view('shop.products')->with('products', $products);
+    }
+    
     // add selected item to cart
     public function getAddToCart(Request $request, $id) {
         $product = Product::find($id);
@@ -36,7 +51,7 @@ class ProductController extends Controller
         $cart->add($product, $product->id);
         
         $request->session()->put('cart', $cart);
-        return redirect()->route('shop.products');
+        return redirect()->back();
     }
     
     public function getReduceByOne($id) {
@@ -112,11 +127,6 @@ class ProductController extends Controller
                 "description" => "Test charge"
             ));
             
-//            $customer = Customer::create(array(
-//                "customer" => $request->input('name'),
-//                "email" => $request->input('email')
-//            ));
-            
             $order = new Order([
                 'cart' => serialize($cart),
                 'custName' => $request->input('custName'),
@@ -128,6 +138,7 @@ class ProductController extends Controller
                 'payment_id' => $charge->id
             ]);
             Auth::user()->orders()->save($order);
+            Mail::send(new OrderReceived);
         } 
         catch (Exception $e) {
             return redirect()->route('checkout');

@@ -27,10 +27,10 @@
     <div class="container-fluid masthead bg-light">
         <div class="row">
             <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="col-md-4 col-xs-2">
+                <div class="col-md-4 col-8">
                     <a class="logo" href="{{ route('index') }}"><img src="{{ URL::to('images/alchemortemLogoDraft.png') }}"></a>
                 </div>
-                <div class="col-md-8 col-xs-10 navlinks">
+                <div class="col-md-8 col-4 navlinks">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>

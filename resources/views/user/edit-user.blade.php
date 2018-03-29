@@ -1,13 +1,13 @@
-@extends('layouts.master')
+@extends('layouts.account')
 
 @section('title')
 ADMIN - Edit User - Alchemortem
 @endsection
 
-@section('content')
+@section('account-content')
     <div class="row">
         <div class="col-md-12">
-            <h1>ADMIN - Edit User</h1>
+            <h2>ADMIN - Edit User</h2>
         </div>
         @if ($errors->any())
             <div class="alert alert-danger">

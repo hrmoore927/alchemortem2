@@ -6,9 +6,20 @@ Shop Our Products - Alchemortem
 
 @section('content')
     <div class="row productList">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <h1>Products</h1>
-            <p>Click the item for more details.</p> 
+            <p>Click the item for more details.</p>
+        </div>
+        <div class="col-md-6">
+            <form action="{{ route('sort.products') }}" method="post" id="sortPrice" name="sortPrice">
+                <select name="filterPrice" id="filterPrice">
+                    <option value="">Sort price</option>
+                    <option class="option" value="asc">High to low</option>
+                    <option class="option" value="desc">Low to high</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Select</button>
+            {{ csrf_field() }}
+            </form>
         </div>
         @foreach($products as $product)
         <div class="col-md-6 col-lg-4 col-xl-3 col-sm-6 col-xs-12 products">
