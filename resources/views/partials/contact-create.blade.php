@@ -11,7 +11,7 @@ Contact Us - Alchemortem
         <p>Send us your questions, comments, and suggestions. We would love to hear from you!</p>
     </div>
 </div>
-<div class="row">
+<div class="row contact">
     <div class="col-md-6 offset-md-3">
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -38,7 +38,7 @@ Contact Us - Alchemortem
             </div>
             <div class="form-group">
                 <label for="message">Comments</label>
-                <input type="textarea" id="message" name="message" class="form-control">
+                <input type="textarea" id="message" name="message" rows="5" cols="40" class="form-control">
             </div>
             <button type="submit" class="btn btn-primary">Send Message</button>
             {{ csrf_field() }}
