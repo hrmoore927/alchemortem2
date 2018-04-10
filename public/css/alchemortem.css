@@ -154,6 +154,10 @@ nav {
     padding-bottom: 10px;
 }
 
+a {
+    color: #937865;
+}
+
 /* footer area */
 .footer {
     margin-top: 20px;
@@ -185,6 +189,7 @@ h1 {
 .welcome p {
     font-family: 'Lato Light';
     font-size: 18px;
+    line-height: 22px;
 }
 
 .carousel {
@@ -255,7 +260,7 @@ h1 {
 .bold {
     font-weight: bold;
     font-size: 18px;
-    color: #535353;
+    color: #696969;
     
 }
 
@@ -375,4 +380,10 @@ h2 {
 
 .panel-footer {
     padding-top: 15px;
+}
+
+@media (max-width: 767px) {
+    #sortPrice {
+        float: none;
+    }
 }

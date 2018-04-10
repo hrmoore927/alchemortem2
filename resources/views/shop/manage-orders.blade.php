@@ -6,16 +6,24 @@ ADMIN - Manage Orders - Alchemortem
 
 @section('account-content')
 <h2>ADMIN - Manage Orders</h2>
+<div class="col-md-8">
 @if (\Session::has('success'))
     <div class="alert alert-success">
         <p>{{ \Session::get('success') }}</p>
     </div><br />
 @endif
+@if($errors->any())
+    <div class="alert alert-danger">
+        @foreach($errors->all() as $error)
+            <p>{{ $error }}</p>
+        @endforeach
+    </div>
+@endif
 @foreach($orders as $order)
         <div class="panel panel-default">
             <div class="panel-body" id="allOrders">
-                <p><span class="bold">Order #:</span> {{ $order->id }} | <span class="bold">Status:</span> {{ $order->orderStatus }}</p>
-                <p><span class="bold">Customer:</span> {{ $order->custName}}</p>
+                <p><span class="bold">Order #:</span> {{ $order->id }} | <span class="bold">Status:</span> {{ $order->orderStatus }} | <span class="bold">Order Date: </span>{{ $order->orderDate }}</p>
+                <p><span class="bold">Customer:</span> {{ $order->custName}} | <span class="bold">Customer ID:</span> {{ $order->user_id }}</p>
                 <p><span class="bold">Shipping Address:</span> {{ $order->shipLine1}} {{ $order->shipLine2 }} {{ $order->shipCity }}, {{ $order->shipState }} {{ $order->shipZip }}</p>
                 <form action="{{ action('ProductController@updateOrderStatus', $order->id) }}" method="post" id="updateOrderStatus">
                         {{ csrf_field() }}
@@ -45,4 +53,5 @@ ADMIN - Manage Orders - Alchemortem
             </div>
         </div>
     @endforeach
+</div>
 @endsection

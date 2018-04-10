@@ -72,7 +72,7 @@ ADMIN - Edit Product - Alchemortem
                     Product Status<br>
                     <select name="status" id="status" form="editProduct">
                         <option value="available">Available</option>
-                        <option value="sold">Sold</option>
+                        <option value="sold">Sold Out</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>

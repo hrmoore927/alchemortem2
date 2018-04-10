@@ -8,6 +8,13 @@ FAQ - Alchemortem
     <div class="row faq">
         <div class="col-md-12">
             <h1>FAQ</h1>
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+            @endif
             <div id="accordion">
                 <h3>What materials are used?</h3>
                 <div>
@@ -15,7 +22,7 @@ FAQ - Alchemortem
                 </div>
                 <h3>Do you take custom orders?</h3>
                 <div>
-                    <p>Yes! We are always happy to chat about custom designs. Please email Jackie <a href="mailto:alchemortem@gmail.com">here</a> to discuss.</p>
+                    <p>Yes! We are always happy to chat about custom designs. Please <a href="mailto:alchemortem@gmail.com">email</a> Jackie to discuss.</p>
                 </div>
                 <h3>Can I have a product shipped to a different address than mine?</h3>
                 <div>

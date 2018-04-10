@@ -7,6 +7,13 @@
             <h1>Reset Password</h1>
             <div class="row">
                 <div class="col-md-12 offset-md-3">
+                    @if($errors->any())
+                        <div class="alert alert-danger">
+                            @foreach($errors->all() as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                        </div>
+                    @endif
                     <form class="form-horizontal" method="POST" action="{{ route('password.request') }}">
                     {{ csrf_field() }}
 

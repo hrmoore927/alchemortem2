@@ -8,6 +8,13 @@ Checkout - Alchemortem
     <div class="row">
         <div class="col-md-12">
             <h1>Checkout</h1>
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+            @endif
         </div>
         <div class="col-md-6 offset-md-3 col-sm-6">
             <p class="bold">Your total: ${{ $total }}</p>

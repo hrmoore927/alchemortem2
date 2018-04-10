@@ -12,7 +12,7 @@ Sign In - Alchemortem
         <p>Don't have an account? <a href="{{ route('signup') }}">Sign up </a></p>
     </div>
     <div class="col-md-6 col-sm-8 offset-md-3 offset-sm-2">
-        @if(count($errors) > 0)
+        @if($errors->any())
             <div class="alert alert-danger">
                 @foreach($errors->all() as $error)
                     <p>{{ $error }}</p>

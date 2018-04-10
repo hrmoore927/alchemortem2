@@ -22,6 +22,13 @@
         @endif
     </div>
     <div class="col-md-6 itemInfo">
+        @if($errors->any())
+            <div class="alert alert-danger">
+                @foreach($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+            </div>
+        @endif
         <p>{{ $product->description }}</p>
         <p class="bold">Materials:</p>
         <p>{{ $product->materials }}</p>

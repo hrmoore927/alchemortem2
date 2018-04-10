@@ -1,11 +1,15 @@
 $('document').ready(function () {
-//    $("#accordion").accordion({
-//        collapsible: true,
-//        active: 1,
-//        heightStyle: "content"
-//    });
-    loadImages();
+//    accordion('#accordion');
+//    loadImages();
 });
+
+function accordion(collapseThese){
+    $(collapseThese).accordion({
+        collapsible: true,
+        active: 1,
+        heightStyle: "content"
+    });
+}
 
 function loadImages(){
     var images = [];

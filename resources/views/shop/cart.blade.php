@@ -9,6 +9,13 @@ Cart - Alchemortem
         <div class="row">
             <div class="col-md-12">
                 <h1>Cart</h1>
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach($errors->all() as $error)
+                            <p>{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
@@ -58,7 +65,16 @@ Cart - Alchemortem
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
                 <h1>No items in cart</h1>
-                <p>What are you waiting for? Checkout out some of <a href="{{ route('shop.products') }}">these awesome items!</a></p>
+                <p>What are you waiting for? Checkout out some of these <a href="{{ route('shop.products') }}">awesome items!</a></p>
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach($errors->all() as $error)
+                            <p>{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
+<!--                <h2>You might like these items:</h2>-->
+                
             </div>
         </div>
     @endif

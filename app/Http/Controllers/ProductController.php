@@ -32,15 +32,17 @@ class ProductController extends Controller
     public function sortPrice(Request $request) {
         $value = $request->input('sortPrice');
         if ($value == 'asc') {
-            $products = Product::where('status', '=', 'available')->orderBy('price', 'ASC')->get();
+            $products = Product::where('status', '=', 'available')->orderBy('price', 'asc')->get();
             $sorted = $products->sortBy('price');
             $sorted->values()->all(); 
+            return view('sort.asc.products')->with('products', $products);
         } else {
-            $products = Product::where('status', '=', 'available')->orderBy('price', 'DESC')->get();
+            $products = Product::where('status', '=', 'available')->orderBy('price', 'desc')->get();
             $sorted = $products->sortByDesc('price');
             $sorted->values()->all();
-        }
-        return view('shop.products')->with('products', $products);
+            return view('sort.desc.products')->with('products', $products);
+        } 
+        
     }
     
     // add selected item to cart
@@ -52,6 +54,21 @@ class ProductController extends Controller
         
         $request->session()->put('cart', $cart);
         return redirect()->back();
+    }
+    
+    // show cart view with item info
+    public function getCart() {
+        if (!Session::has('cart')) {
+            return view('shop.cart', ['products' => null]);
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        return view('shop.cart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+    }
+    
+    public function randomItems(){
+        $mightLike = collect(Product::where('status', '=', 'available'))->random(4);
+        return view('shop.cart')->with('mightLike', $mightLike);
     }
     
     public function getReduceByOne($id) {
@@ -88,16 +105,6 @@ class ProductController extends Controller
         }
         
         return redirect()->route('cart');
-    }
-    
-    // show cart view with item info
-    public function getCart() {
-        if (!Session::has('cart')) {
-            return view('shop.cart', ['products' => null]);
-        }
-        $oldCart = Session::get('cart');
-        $cart = new Cart($oldCart);
-        return view('shop.cart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
     }
     
     // get the checkout view with cart info
@@ -138,14 +145,14 @@ class ProductController extends Controller
                 'payment_id' => $charge->id
             ]);
             Auth::user()->orders()->save($order);
-            Mail::send(new OrderReceived);
+//            Mail::send(new OrderReceived);
         } 
         catch (Exception $e) {
             return redirect()->route('checkout');
         }
         
         Session::forget('cart');
-        return redirect()->route('successful-checkout');
+        return redirect()->route('index')->with('success', 'Your order has been successfully placed! Thank you!');
     }
     
     public function successfulCheckout() {

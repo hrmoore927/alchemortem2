@@ -32,7 +32,10 @@ Alchemortem - My Account
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('user-orders') }}">Orders</a>
                     </li>
-                @endif    
+                @endif 
+                <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout')}}">Logout</a>
+                </li>   
             </ul>
         </div>
         <div class="col-lg-9 col-md-12">

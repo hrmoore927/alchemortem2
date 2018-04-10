@@ -73,10 +73,10 @@ class UserController extends Controller
                 $oldUrl = Session::get('oldUrl');
                 Session::forget('oldUrl');
                 return redirect($oldUrl); // fix this redirect
-            }
-            return redirect('my-account');
+            } 
+            return redirect('my-account')->with('success', 'You are now logged in to your account!');
         }
-        return redirect()->back()->withInput()->withErrors(['password' => 'Incorrect password.']);
+        return redirect()->back()->withInput()->withErrors(['These credentials do not match our records.']);
     }
     
     // user account view
@@ -116,7 +116,7 @@ class UserController extends Controller
     // logout the user
     public function getLogout() {
         Auth::logout();
-        return redirect()->route('index');
+        return redirect()->route('index')->with('success', 'You have successfully logged out of your account!');
     }
     
     // ADMIN ONLY

@@ -13,8 +13,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha2562Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
-    <script type="text/javascript" src="{{ URL::to('jquery-3.3.1.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('jquery-3.3.1.js') }}"></script>
+    
     <script type="text/javascript" src="{{ URL::to('jquery-ui.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('js/alchemortem.js') }}"></script>
 </head>
@@ -50,6 +49,9 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/faq') }}">FAQ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/contact') }}">Contact</a>
                             </li>
                             <li class="nav-item dropdown">    
                                 @if(Auth::check())

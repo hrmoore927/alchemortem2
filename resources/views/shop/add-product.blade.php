@@ -6,12 +6,18 @@ ADMIN - Add Product - Alchemortem
 
 @section('account-content')
     <h2>ADMIN - Add Product</h2>
-    @if(count($errors) > 0)
+    @if($errors->any())
         <div class="alert alert-danger">
             @foreach($errors->all() as $error)
                 <p>{{ $error }}</p>
             @endforeach
         </div>
+    @endif
+    
+    @if (\Session::has('success'))
+        <div class="alert alert-success">
+            <p>{{ \Session::get('success') }}</p>
+        </div><br />
     @endif
     <form action="{{ route('add-product') }}" method="post" id="add-product">
         <div class="form-group">

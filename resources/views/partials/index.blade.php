@@ -16,7 +16,7 @@ Alchemortem
         @endif
         @if(Session::has('success'))
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-10">
                 <div id="charge-message" class="alert alert-success">
                     {{ Session::get('success') }}
                 </div>

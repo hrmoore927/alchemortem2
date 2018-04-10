@@ -11,6 +11,13 @@ Forgot Password - Alchemortem
             <h1>Reset Password</h1>
             <p>Forgotten your password? No problem. Enter the email address associated with your account to receive a link to the password reset form.</p>
         </div>
+        @if($errors->any())
+            <div class="alert alert-danger">
+                @foreach($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+            </div>
+        @endif
     </div>
     <div class="row">
         <div class="col-md-4 offset-md-4">
