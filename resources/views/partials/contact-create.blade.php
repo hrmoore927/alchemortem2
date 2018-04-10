@@ -38,7 +38,7 @@ Contact Us - Alchemortem
             </div>
             <div class="form-group">
                 <label for="message">Comments</label>
-                <input type="textarea" id="message" name="message" rows="5" cols="40" class="form-control">
+                <textarea id="message" name="message" rows="5" cols="40" class="form-control"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Send Message</button>
             {{ csrf_field() }}
