@@ -26,7 +26,7 @@ Alchemortem
         <h1>Welcome to Alchemortem</h1>
         <p>Alchemortem specializes in custom jewelry made from organic materials. Each piece is available in brass or silver. All brass pieces are antiqued brass color. All silver pieces are silver-plated brass. Please take a look at our products and enjoy! If you have any questions about the products or if you would like to talk with Jackie about a custom piece, check out the FAQ page or contact her <a href="mailto:alchemortem@gmail.com">here</a>.</p>
     </div>
-    <div class="col-lg-6 col-md-6 col-md-offset-3">
+    <div class="col-lg-6 col-md-12">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="2750">
             <div class="carousel-inner">
                 <div class="carousel-item active">

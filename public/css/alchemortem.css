@@ -92,6 +92,8 @@ body {
 
 .masthead {
     margin-bottom: 20px;
+    height: 100%;
+    padding: 20px 0;
 }
 
 .logo img {
@@ -99,13 +101,20 @@ body {
     margin-left: -20px;
 }
 
-nav, .main {
+.main {
     margin-left: 5%;
+}
+
+.logoNav, .main {
     width: 90%;
 }
 
-nav {
-    margin-right: 6.3%;
+.logoNav {
+    margin-left: 7%;
+}
+
+.navbar {
+    padding-top: 15px;
 }
 
 .nav-item {
@@ -114,7 +123,8 @@ nav {
 
 .navbar-toggler {
     float: right;
-    margin-top: 0;
+    margin-top: 10px;
+    margin-left: 85%;
 }
 
 .badge-secondary {
@@ -305,6 +315,15 @@ thead {
     padding-bottom: 10px;
 }
 
+#accordion .card {
+    width: 100%;
+    height: auto;
+}
+
+.btn-link {
+    color: #937865;
+}
+
 /******************** ACCOUNT INFO BLADE *****************/
 
 h2 {
@@ -393,5 +412,67 @@ h2 {
 @media (max-width: 767px) {
     #sortPrice {
         float: none;
+    }
+}
+
+/*************** MEDIA QUERIES *************/
+
+@media screen and (max-width: 991px) {
+    .logo img {
+        width: 450px;
+    }
+    
+    .navbar-nav {
+        margin-top: 100px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .masthead {
+        padding-bottom: 0;
+    }
+    
+    .navbar-toggler {
+        position: absolute;
+        top: -75px;
+    }
+    
+    .navbar ul {
+        margin-top: -10px;
+    }
+    
+    .navbar li {
+        font-size: 18px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgba(169, 169, 169, 0.4);
+    }
+    
+    .navbar li:last-of-type {
+        border: none;
+    }
+}
+
+@media screen and (max-width: 649px) {
+    .logo img {
+        width: 60%;
+    }
+    
+    .navbar-toggler {
+        top: -60px;
+    }
+}
+
+@media screen and (max-width: 577px) {
+    .masthead {
+        height: 100%;
+    }
+    
+    .logo img {
+        width: 70%;
+    }
+    
+    .navbar-toggler {
+        left: -15px;
+        top: -55px;
     }
 }

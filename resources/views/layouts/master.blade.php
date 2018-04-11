@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ URL::to('fonts/fontawesome-free-5.0.6/web-fonts-with-css/css/fontawesome-all.min.css') }}">
@@ -24,12 +25,12 @@
         </div>
     </div>
     <div class="container-fluid masthead bg-light">
-        <div class="row">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="col-md-4 col-8">
+        <div class="row logoNav">
+            <div class="col-md-4 col-sm-12">
                     <a class="logo" href="{{ route('index') }}"><img src="{{ URL::to('images/alchemortemLogoDraft.png') }}"></a>
-                </div>
-                <div class="col-md-8 col-4 navlinks">
+            </div>
+            <div class="col-md-8 col-sm-12 navlinks">
+                <nav class="navbar navbar-expand-lg navbar-light">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>
@@ -82,8 +83,8 @@
                             </li>
                         </ul>
                     </div>
-                </div>
-            </nav>
+                </nav>
+            </div>
         </div>
     </div>
     <div class="container-fluid main">
