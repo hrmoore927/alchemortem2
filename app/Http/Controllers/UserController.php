@@ -26,23 +26,12 @@ class UserController extends Controller
             'password' => 'required|min:4'
         ]);
         
-//        $shipping = new Shipping([
-//            'shipLine1' => $request->input('shipLine1'),
-//            'shipLine2' => $request->input('shipLine2'),
-//            'shipCity' => $request->input('shipCity'),
-//            'shipState' => $request->input('shipState'),
-//            'shipZip' => $request->input('shipZip')
-//            ]);
-//        $shipping->save();
-        
         $user = new User([
             'fName' => $request->input('fName'),
             'lName' => $request->input('lName'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password'))
-//            'ship_id' => $shipping->id
         ]);
-//        $shipping->user()->save($user);
         $user->save();
         
         Auth::login($user);
@@ -119,43 +108,64 @@ class UserController extends Controller
         return redirect()->route('index')->with('success', 'You have successfully logged out of your account!');
     }
     
+    // unauthorized access error page
+    public function unauthorized() {
+        return view('errors.unauthorized');
+    }
+    
     // ADMIN ONLY
     // display all users for admin
     public function getUsers() {
-        $users = User::all();
-        return view('user.manage-users')->with('users', $users);
+        if (Auth::check() && Auth::user()->role == 'admin') {
+            $users = User::all();
+            return view('user.manage-users')->with('users', $users);
+        } else {
+            return view('errors.unauthorized');
+        }
     }
     
     // edit the selected user info
     public function editUser($id)
     {
-        $user = User::find($id);
-        return view('user.edit-user', compact('user', 'id'));
+        if (Auth::check() && Auth::user()->role == 'admin') {
+            $user = User::find($id);
+            return view('user.edit-user', compact('user', 'id'));
+        } else {
+            return view('errors.unauthorized');
+        }
     }
     
     // update selected user info with database and validate fields
     public function updateUser(Request $request, $id)
     {
-        $user = User::find($id);
-        $this->validate(request(), [
-            'fName' => 'required',
-            'lName' => 'required',
-            'email' => 'email|required',
-            'role' => 'required'
-        ]);
-        $user->fName = $request->input('fName');
-        $user->lName = $request->input('lName');
-        $user->email = $request->input('email');
-        $user->role = $request->input('role');
-        $user->save();
-        return redirect('manage-users')->with('success', 'User has been updated!');
+        if (Auth::check() && Auth::user()->role == 'admin') {
+            $user = User::find($id);
+            $this->validate(request(), [
+                'fName' => 'required',
+                'lName' => 'required',
+                'email' => 'email|required',
+                'role' => 'required'
+            ]);
+            $user->fName = $request->input('fName');
+            $user->lName = $request->input('lName');
+            $user->email = $request->input('email');
+            $user->role = $request->input('role');
+            $user->save();
+            return redirect('manage-users')->with('success', 'User has been updated!');
+        } else {
+            return view('errors.unauthorized');
+        }
     }
     
     // delete user
     public function deleteUser($id)
     {
-        $user = User::find($id);
-        $user->delete();
-        return redirect('manage-users')->with('success', 'User has been deleted');
+        if (Auth::check() && Auth::user()->role == 'admin') {
+            $user = User::find($id);
+            $user->delete();
+            return redirect('manage-users')->with('success', 'User has been deleted');
+        } else {
+            return view('errors.unauthorized');
+        }
     }
 }

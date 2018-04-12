@@ -5,8 +5,14 @@ ADMIN - Add Product - Alchemortem
 @endsection
 
 @section('account-content')
-    <h2>ADMIN - Add Product</h2>
-    @if($errors->any())
+<div class="row">
+    <div class="col-md-12">
+        <h2>ADMIN - Add Product</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        @if($errors->any())
         <div class="alert alert-danger">
             @foreach($errors->all() as $error)
                 <p>{{ $error }}</p>
@@ -42,7 +48,7 @@ ADMIN - Add Product - Alchemortem
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <input type="textbox" id="description" name="description" class="form-control">
+            <textarea id="description" name="description" class="form-control"></textarea>
         </div>
         <div class="form-group">
             <label for="materials">Materials</label>
@@ -63,4 +69,6 @@ ADMIN - Add Product - Alchemortem
         <button type="submit" class="btn btn-primary">Add Product</button>
         {{ csrf_field() }}
     </form>
+    </div>
+</div>
 @endsection

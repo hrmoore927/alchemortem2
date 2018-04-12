@@ -29,16 +29,16 @@ Contact Us - Alchemortem
         @endif
         <form action="{{ route('contact.store') }}" method="post">
             <div class="form-group">
-                <label for="name">Your Name</label>
-                <input type="text" id="name" name="name" class="form-control">
+                <label for="contactName">Your Name</label>
+                <input type="text" id="contactName" name="contactName" class="form-control">
             </div>
             <div class="form-group">
-                <label for="email">Your Email</label>
-                <input type="email" id="email" name="email" class="form-control">
+                <label for="contactEmail">Your Email</label>
+                <input type="email" id="contactEmail" name="contactEmail" class="form-control">
             </div>
             <div class="form-group">
-                <label for="message">Comments</label>
-                <textarea id="message" name="message" rows="5" cols="40" class="form-control"></textarea>
+                <label for="contactMessage">Comments</label>
+                <textarea id="contactMessage" name="contactMessage" rows="5" cols="40" class="form-control"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Send Message</button>
             {{ csrf_field() }}

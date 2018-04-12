@@ -110,7 +110,7 @@ body {
 }
 
 .logoNav {
-    margin-left: 7%;
+    margin-left: 6%;
 }
 
 .navbar {
@@ -202,6 +202,10 @@ h1 {
     line-height: 22px;
 }
 
+.welcome a {
+    font-weight: bold;
+}
+
 .carousel {
     padding-top: 20px;
 }
@@ -210,6 +214,10 @@ h1 {
 
 .products {
     margin: 10px 0;
+}
+
+.productList p {
+    padding-bottom: 5px;
 }
 
 #sortPrice {
@@ -269,8 +277,8 @@ h1 {
 
 .bold {
     font-weight: bold;
-    font-size: 18px;
-    color: #696969;
+    font-size: 24px;
+    color: rgb(119, 92, 68);
     
 }
 
@@ -384,9 +392,6 @@ h2 {
 
 /*************** ADD PRODUCT BLADE *************/
 
-#add-product input {
-    width: 600px;
-}
 
 /*************** SHOW ALL ORDERS BLADE *************/
 
@@ -401,7 +406,7 @@ h2 {
     padding-bottom: 5px;
 }
 
-#allOrders button {
+.allOrders button {
     margin-left: 15px;
 }
 

@@ -21,17 +21,17 @@ ADMIN - Manage Orders - Alchemortem
 @endif
 @foreach($orders as $order)
         <div class="panel panel-default">
-            <div class="panel-body" id="allOrders">
+            <div class="panel-body allOrders">
                 <p><span class="bold">Order #:</span> {{ $order->id }} | <span class="bold">Status:</span> {{ $order->orderStatus }} | <span class="bold">Order Date: </span>{{ $order->orderDate }}</p>
                 <p><span class="bold">Customer:</span> {{ $order->custName}} | <span class="bold">Customer ID:</span> {{ $order->user_id }}</p>
                 <p><span class="bold">Shipping Address:</span> {{ $order->shipLine1}} {{ $order->shipLine2 }} {{ $order->shipCity }}, {{ $order->shipState }} {{ $order->shipZip }}</p>
-                <form action="{{ action('ProductController@updateOrderStatus', $order->id) }}" method="post" id="updateOrderStatus">
+                <form action="{{ action('ProductController@updateOrderStatus', $order->id) }}" method="post" class="updateOrderStatus">
                         {{ csrf_field() }}
                         {{ method_field('PATCH') }}
                         <input type="hidden" name="_method" value="PATCH">
                         <div class="form-group">
                             Update Order Status
-                            <select name="orderStatus" id="orderStatus" form="updateOrderStatus">
+                            <select name="orderStatus" class="orderStatus">
                                 <option value="paid">Paid</option>
                                 <option value="shipped">Shipped</option>
                             </select>

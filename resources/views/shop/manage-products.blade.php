@@ -43,7 +43,7 @@ ADMIN - Manage Products - Alchemortem
                     <tr>
                         <th scope="row">{{ $product->id }}</th>
                         <td>{{ $product->productName }}</td>
-                        <td class="managePhotos"><img src="{{ $product->image1 }}" alt="product image"><img src="{{ $product->image2 }}" alt="product image"><img src="{{ $product->image3 }}"><img src="{{ $product->image4 }}"></td>
+                        <td class="managePhotos"><img src="{{ $product->image1 }}" alt="product image"><img src="{{ $product->image2 }}" alt="product image 2"><img src="{{ $product->image3 }}" alt=""><img src="{{ $product->image4 }}" alt=""></td>
                         <td>{{ $product->description }}</td>
                         <td>{{ $product->materials }}</td>
                         <td>{{ $product->dimensions }}</td>

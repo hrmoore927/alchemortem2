@@ -162,103 +162,135 @@ class ProductController extends Controller
     // ADMIN ONLY
     // add a product view
     public function getProductForm() {
-        return view ('shop.add-product');
+        if (Auth::check() && Auth::user()->role == 'admin') {
+            return view ('shop.add-product');
+        } else {
+            return view('errors.unauthorized');
+        }
     }
     
     // post new product info to database
     public function postAddProduct(Request $request) {
-        $this->validate($request, [
-            'productName' => 'required',
-            'image1' => 'required',
-            'image2' => 'required',
-            'description' => 'required',
-            'materials' => 'required',
-            'dimensions' => 'required',
-            'category' => 'required',
-            'price' => 'required'
-        ]);
-        
-        $product = new Product([
-            'productName' => $request->input('productName'),
-            'image1' => $request->input('image1'),
-            'image2' => $request->input('image2'),
-            'image3' => $request->input('image3'),
-            'image4' => $request->input('image4'),
-            'description' => $request->input('description'),
-            'materials' => $request->input('materials'),
-            'dimensions' => $request->input('dimensions'),
-            'category' => $request->input('category'),
-            'price' => $request->input('price'),
-            'status' => 'available'
-        ]);
-        $product->save();
-        
-        return redirect()->route('add-product')->with('success', 'New product has been added!');
+        if (Auth::check() && Auth::user()->role == 'admin') {
+            $this->validate($request, [
+                'productName' => 'required',
+                'image1' => 'required',
+                'image2' => 'required',
+                'description' => 'required',
+                'materials' => 'required',
+                'dimensions' => 'required',
+                'category' => 'required',
+                'price' => 'required'
+            ]);
+
+            $product = new Product([
+                'productName' => $request->input('productName'),
+                'image1' => $request->input('image1'),
+                'image2' => $request->input('image2'),
+                'image3' => $request->input('image3'),
+                'image4' => $request->input('image4'),
+                'description' => $request->input('description'),
+                'materials' => $request->input('materials'),
+                'dimensions' => $request->input('dimensions'),
+                'category' => $request->input('category'),
+                'price' => $request->input('price'),
+                'status' => 'available'
+            ]);
+            $product->save();
+
+            return redirect()->route('add-product')->with('success', 'New product has been added!');
+        } else {
+            return view('errors.unauthorized');
+        }
     }
     
     // show all product info
     public function getProductsInfo() {
-        $products = Product::all();
-        return view('shop.manage-products')->with('products', $products);
+        if (Auth::check() && Auth::user()->role == 'admin') {
+            $products = Product::all();
+            return view('shop.manage-products')->with('products', $products);
+        } else {
+            return view('errors.unauthorized');
+        }
     }
     
     // edit form for selected product
     public function editProduct($id)
     {
-        $product = Product::find($id);
-        return view('shop.edit-product', compact('product', 'id'));
+        if (Auth::check() && Auth::user()->role == 'admin') {
+            $product = Product::find($id);
+            return view('shop.edit-product', compact('product', 'id'));
+        } else {
+            return view('errors.unauthorized');
+        }
     }
     
     // send updated product info to database
     public function updateProduct(Request $request, $id)
     {
-        $product = Product::find($id);
-        $this->validate(request(), [
-            'productName' => 'required',
-            'image1' => 'required',
-            'image2' => 'required',
-            'description' => 'required',
-            'materials' => 'required',
-            'dimensions' => 'required',
-            'category' => 'required',
-            'price' => 'required',
-            'status' => 'required'
-        ]);
-        $product->productName = $request->input('productName');
-        $product->image1 = $request->input('image1');
-        $product->image2 = $request->input('image2');
-        $product->image3 = $request->input('image3');
-        $product->image4 = $request->input('image4');
-        $product->description = $request->input('description');
-        $product->materials = $request->input('materials');
-        $product->dimensions = $request->input('dimensions');
-        $product->category = $request->input('category');
-        $product->status = $request->input('status');
-        $product->save();
-        return redirect('manage-products')->with('success', 'Product has been updated!');
+        if (Auth::check() && Auth::user()->role == 'admin') {
+            $product = Product::find($id);
+            $this->validate(request(), [
+                'productName' => 'required',
+                'image1' => 'required',
+                'image2' => 'required',
+                'description' => 'required',
+                'materials' => 'required',
+                'dimensions' => 'required',
+                'category' => 'required',
+                'price' => 'required',
+                'status' => 'required'
+            ]);
+            $product->productName = $request->input('productName');
+            $product->image1 = $request->input('image1');
+            $product->image2 = $request->input('image2');
+            $product->image3 = $request->input('image3');
+            $product->image4 = $request->input('image4');
+            $product->description = $request->input('description');
+            $product->materials = $request->input('materials');
+            $product->dimensions = $request->input('dimensions');
+            $product->category = $request->input('category');
+            $product->status = $request->input('status');
+            $product->save();
+            return redirect('manage-products')->with('success', 'Product has been updated!');
+        } else {
+            return view('errors.unauthorized');
+        }
     }
     
     // delete selected product
     public function deleteProduct($id)
     {
-        $product = Product::find($id);
-        $product->delete();
-        return redirect('manage-products')->with('success', 'Product has been deleted');
+        if (Auth::check() && Auth::user()->role == 'admin') {
+            $product = Product::find($id);
+            $product->delete();
+            return redirect('manage-products')->with('success', 'Product has been deleted');
+        } else {
+            return view('errors.unauthorized');
+        }
     }
     
     public function getAllOrders() {
-        $orders = Order::all();
-        $orders->transform(function($order, $key) {
-            $order->cart = unserialize($order->cart);
-            return $order;
-        });
-        return view('shop.manage-orders', ['orders' => $orders]);
+        if (Auth::check() && Auth::user()->role == 'admin') {
+            $orders = Order::all();
+            $orders->transform(function($order, $key) {
+                $order->cart = unserialize($order->cart);
+                return $order;
+            });
+            return view('shop.manage-orders', ['orders' => $orders]);
+        } else {
+            return view('errors.unauthorized');
+        }
     }
     
     public function updateOrderStatus(Request $request, $id) {
-        $order = Order::find($id);
-        $order->orderStatus = $request->input('orderStatus');
-        $order->save();
-        return redirect('manage-orders')->with('success', 'Order status has been updated!');
+        if (Auth::check() && Auth::user()->role == 'admin') {
+            $order = Order::find($id);
+            $order->orderStatus = $request->input('orderStatus');
+            $order->save();
+            return redirect('manage-orders')->with('success', 'Order status has been updated!');
+        } else {
+            return view('errors.unauthorized');
+        }
     }
 }

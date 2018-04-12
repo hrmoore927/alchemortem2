@@ -22,11 +22,11 @@ Sign In - Alchemortem
         <form action="{{ route('signin') }}" method="post">
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" id="email" name="email" class="form-control">
+                <input type="text" name="email" class="form-control">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" class="form-control">
+                <input type="password" name="password" class="form-control">
             </div>
             <button type="submit" class="btn btn-primary">Sign In</button>
             <a id="forgotPassword" href="{{ url('/password/reset') }}">Forgot password</a>

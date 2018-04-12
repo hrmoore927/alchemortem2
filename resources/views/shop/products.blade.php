@@ -8,6 +8,7 @@ Shop Our Products - Alchemortem
     <div class="row productList">
         <div class="col-md-12 col-sm-12">
             <h1>Available Items</h1>
+            <p>All items are handmade one-of-a-kind products. When ordering multiple quanities of the same item, please allow for time of production during the shipping process.</p>
             <p>Click the item for more details.</p>
             @if($errors->any())
                 <div class="alert alert-danger">

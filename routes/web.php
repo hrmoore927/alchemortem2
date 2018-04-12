@@ -72,6 +72,10 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/successful-checkout', 'ProductController@successfulCheckout')->name('successful-checkout');
     });
 
+
+//***********************ERRORS*********************
+Route::get('/unauthorized-access', 'UserController@unauthorized')->name('unauthorized');
+
 //***********************CART********************* 
 // add to cart
 Route::get('/add-to-cart/{id}', 'ProductController@getAddToCart')->name('add-to-cart');

@@ -28,12 +28,12 @@ Forgot Password - Alchemortem
                 </div>
             @endif
 
-            <form class="form-horizontal" id="sendEmail" role="form" method="POST" action="{{ url('/password/email') }}">
+            <form class="form-horizontal" id="sendEmail" method="POST" action="{{ url('/password/email') }}">
             {{ csrf_field() }}
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <label for="email" class="col-md-12 control-label">E-Mail Address</label>
                     <div class="col-md-12">
-                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                        <input type="email" class="form-control" name="email" value="{{ old('email') }}" required>
                         @if ($errors->has('email'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('email') }}</strong>

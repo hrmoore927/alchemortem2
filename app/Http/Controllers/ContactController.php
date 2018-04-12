@@ -17,9 +17,9 @@ class ContactController extends Controller
     public function store(ContactFormRequest $request) {
         $contact = [];
         
-        $contact['name'] = $request->input('name');
-        $contact['email'] = $request->input('email');
-        $contact['message'] = $request->input('message');
+        $contact['name'] = $request->input('contactName');
+        $contact['email'] = $request->input('contactEmail');
+        $contact['message'] = $request->input('contactMessage');
         
         Mail::to(config('mail.from.address'))->send(new ContactEmail($contact));
         

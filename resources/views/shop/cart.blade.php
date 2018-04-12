@@ -42,7 +42,6 @@ Cart - Alchemortem
                                 'id' => $product['item']['id']
                             ]) }}">Remove item</a></li>
                             </ul>
-                            <td></td>
                         </tr>
                         @endforeach
                     </tbody>
