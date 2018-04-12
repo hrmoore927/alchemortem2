@@ -22,15 +22,15 @@ Sign Up - Alchemortem
         <form action="{{ route('signup') }}" method="post">
             <div class="form-group">
                 <label for="fName">First Name:</label>
-                <input type="text" id="fName" name="fName" class="form-control">
+                <input type="text" id="fName" name="fName" class="form-control" value="{{ old('fName') }}">
             </div>
             <div class="form-group">
                 <label for="lName">Last Name:</label>
-                <input type="text" id="lName" name="lName" class="form-control">
+                <input type="text" id="lName" name="lName" class="form-control" value="{{ old('lName') }}">
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" name="email" class="form-control">
+                <input type="email" name="email" class="form-control" value="{{ old('email') }}">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>

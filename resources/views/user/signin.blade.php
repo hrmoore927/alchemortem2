@@ -22,7 +22,7 @@ Sign In - Alchemortem
         <form action="{{ route('signin') }}" method="post">
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" name="email" class="form-control">
+                <input type="text" name="email" class="form-control" value="{{ old('email') }}">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>

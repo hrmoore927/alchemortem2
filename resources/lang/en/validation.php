@@ -116,6 +116,14 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'fName' => 'first name',
+        'lName' => 'last name',
+        'productName' => 'product name',
+        'image1' => 'image 1',
+        'image2' => 'image 2',
+        'image3' => 'image 3',
+        'image4' => 'image 4',
+    ],
 
 ];
