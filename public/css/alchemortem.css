@@ -199,24 +199,40 @@ h1 {
 .welcome p {
     font-family: 'Lato Light';
     font-size: 18px;
-    line-height: 22px;
+    line-height: 25px;
 }
 
 .welcome a {
     font-weight: bold;
 }
 
-.carousel {
-    padding-top: 20px;
+/******************** SHOP BLADE ********************/
+#search {
+    float: right;
+    vertical-align: baseline;
+    margin-right: 2.5%;
 }
 
-/******************** SHOP BLADE ********************/
+.searchInput {
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+#search button {
+    background-color: transparent;
+    border: none;
+    margin-top: 20px;
+}
+
+.productList p {
+    line-height: 22px;
+}
 
 .products {
     margin: 10px 0;
 }
 
-.productList p {
+.product p {
     padding-bottom: 5px;
 }
 
@@ -269,6 +285,7 @@ h1 {
 
 .itemInfo p {
     padding-bottom: 10px;
+    line-height: 22px;
 }
 
 .singleItem img {
@@ -328,6 +345,10 @@ thead {
     height: auto;
 }
 
+#accordion .card-body {
+    padding-left: 30px;
+}
+
 .btn-link {
     color: #937865;
 }
@@ -357,6 +378,10 @@ h2 {
 #forgotPassword {
     float: right;
     margin-top: 10px;
+}
+
+.g-recaptcha {
+    margin-bottom: 20px;
 }
 
 /******************** CONTACT US BLADE *****************/

@@ -22,11 +22,12 @@ ADMIN - Manage Orders - Alchemortem
 @foreach($orders as $order)
         <div class="panel panel-default">
             <div class="panel-body allOrders">
-                <p><span class="bold">Order #:</span> {{ $order->id }} | <span class="bold">Status:</span> {{ $order->orderStatus }}</p>
-                <p><span class="bold">Order Date: </span>{{ $order->orderDate }}</p>
+                <p><span class="bold">Order #:</span> {{ $order->order_id }} | <span class="bold">Status:</span> {{ $order->orderStatus }}</p>
+                <p><span class="bold">Order Date: </span>{{ Carbon\Carbon::parse($order->orderDate)->format('m/d/Y') }}</p>
                 <p><span class="bold">Customer:</span> {{ $order->custName}} | <span class="bold">Customer ID:</span> {{ $order->user_id }}</p>
                 <p><span class="bold">Shipping Address:</span> {{ $order->shipLine1}} {{ $order->shipLine2 }} {{ $order->shipCity }}, {{ $order->shipState }} {{ $order->shipZip }}</p>
-                <form action="{{ action('ProductController@updateOrderStatus', $order->id) }}" method="post" class="updateOrderStatus">
+<!--
+                <form action="/manage-orders/{{ $order->id }}" method="POST" class="updateOrderStatus">
                         {{ csrf_field() }}
                         {{ method_field('PATCH') }}
                         <input type="hidden" name="_method" value="PATCH">
@@ -40,6 +41,7 @@ ADMIN - Manage Orders - Alchemortem
                         </div>
                         
                     </form>
+-->
                 <ul class="list-group">
                     @foreach($order->cart->items as $item)
                     <li class="list-group-item">

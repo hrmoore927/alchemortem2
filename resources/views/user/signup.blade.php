@@ -36,9 +36,14 @@ Sign Up - Alchemortem
                 <label for="password">Password</label>
                 <input type="password" name="password" class="form-control">
             </div>
-            <button type="submit" class="btn btn-primary">Sign Up</button>
+<!--            <div class="g-recaptcha" name="g-recaptcha-response" data-sitekey="6LcpZFQUAAAAALPIKbxol6VqakbXKhZIRVPfQ_nr"></div>-->
+            <button type="submit" class="btn btn-primary  register-btn">Sign Up</button>
             {{ csrf_field() }}
         </form>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script src="https://www.google.com/recaptcha/api.js"></script>
 @endsection

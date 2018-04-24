@@ -14,13 +14,31 @@ use Stripe\Charge;
 use Stripe\Stripe;
 use ShoppingCart;
 use App\Mail\OrderReceived;
+use Illuminate\Support\Carbon;
 
 class ProductController extends Controller
 {
     // show products on shop page where status = available
-    public function getProducts(){
-        $products = Product::where('status', '=', 'available')->get();
+    public function getProducts(Request $request){
+        if ($request->search) {
+            $products = $this->searchProducts($request->search);
+        } else {
+            $products = Product::where('status', '=', 'available')->get();
+        }
         return view('shop.products')->with('products', $products);
+    }
+    
+    public function searchProducts($search)
+    {
+        $products = Product::where('productName', 'LIKE', '%'.$search.'%')->get();
+
+        return $products;
+    }
+
+    public function submitSearch(Request $request)
+    {
+//        dd($request->queryString);
+        return redirect('/shop-products?search=' . $request->queryString);
     }
     
     // show view for selected product details
@@ -29,21 +47,21 @@ class ProductController extends Controller
         return view('shop.item')->with('product', $product);
     }
     
-    public function sortPrice(Request $request) {
-        $value = $request->input('sortPrice');
-        if ($value == 'asc') {
-            $products = Product::where('status', '=', 'available')->orderBy('price', 'asc')->get();
-            $sorted = $products->sortBy('price');
-            $sorted->values()->all(); 
-            return view('sort.asc.products')->with('products', $products);
-        } else {
-            $products = Product::where('status', '=', 'available')->orderBy('price', 'desc')->get();
-            $sorted = $products->sortByDesc('price');
-            $sorted->values()->all();
-            return view('sort.desc.products')->with('products', $products);
-        } 
-        
-    }
+//    public function sortPrice(Request $request) {
+//        $value = $request->input('sortPrice');
+//        if ($value == 'asc') {
+//            $products = Product::where('status', '=', 'available')->orderBy('price', 'asc')->get();
+//            $sorted = $products->sortBy('price');
+//            $sorted->values()->all(); 
+//            return view('sort.asc.products')->with('products', $products);
+//        } else {
+//            $products = Product::where('status', '=', 'available')->orderBy('price', 'desc')->get();
+//            $sorted = $products->sortByDesc('price');
+//            $sorted->values()->all();
+//            return view('sort.desc.products')->with('products', $products);
+//        } 
+//        
+//    }
     
     // add selected item to cart
     public function getAddToCart(Request $request, $id) {
@@ -134,6 +152,7 @@ class ProductController extends Controller
                 "description" => "Test charge"
             ));
             
+            $carbon = Carbon::today();
             $order = new Order([
                 'cart' => serialize($cart),
                 'custName' => $request->input('custName'),
@@ -142,6 +161,7 @@ class ProductController extends Controller
                 'shipCity' => $request->input('shipCity'),
                 'shipState' => $request->input('shipState'),
                 'shipZip' => $request->input('shipZip'),
+                'orderDate' => $carbon,
                 'payment_id' => $charge->id
             ]);
             Auth::user()->orders()->save($order);
@@ -287,6 +307,7 @@ class ProductController extends Controller
         if (Auth::check() && Auth::user()->role == 'admin') {
             $order = Order::find($id);
             $order->orderStatus = $request->input('orderStatus');
+            $order->updated_at = now();
             $order->save();
             return redirect('manage-orders')->with('success', 'Order status has been updated!');
         } else {

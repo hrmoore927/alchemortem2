@@ -52,7 +52,7 @@ FAQ - Alchemortem
                     <div class="card-header" id="headingThree">
                         <h5 class="mb-0">
                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Can I have a product shipped to a different address than mine?
+                            Can I ship to a different address than mine?
                             </button>
                         </h5>
                     </div>

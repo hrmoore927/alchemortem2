@@ -21,8 +21,11 @@ Route::get('/', function () {
 // products page
 Route::get('/shop-products', 'ProductController@getProducts')->name('shop.products');
 
-Route::post('/shop-products/price-asc', 'ProductController@sortPrice')->name('sort.asc.products');
-Route::post('/shop-products/price-desc', 'ProductController@sortPrice')->name('sort.desc.products');
+//Route::get('/search', 'ProductController@searchProducts')->name('search');
+Route::post('/shop-products/search', 'ProductController@submitSearch');
+
+//Route::post('/shop-products/price-asc', 'ProductController@sortPrice')->name('sort.asc.products');
+//Route::post('/shop-products/price-desc', 'ProductController@sortPrice')->name('sort.desc.products');
 
 // individual item
 Route::get('/item/{id}', 'ProductController@showProduct')->name('show.product');
@@ -121,4 +124,4 @@ Route::get('/delete-product/{id}', 'ProductController@deleteProduct')->name('del
 Route::get('/manage-orders', 'ProductController@getAllOrders')->name('manage-orders');
 // update order status
 Route::patch('/manage-orders/{id}', 'ProductController@updateOrderStatus')->name('update-order');
-Auth::routes();
+//Auth::routes();

@@ -17,20 +17,12 @@ Shop Our Products - Alchemortem
                     @endforeach
                 </div>
             @endif
-        </div>
-<!--
-        <div class="col-md-6 col-sm-12">
-            <form action="" method="post" id="sortPrice" name="sortPrice">
-                <select name="filterPrice" id="filterPrice">
-                    <option value="">Sort price</option>
-                    <option class="option" value="asc">High to low</option>
-                    <option class="option" value="desc">Low to high</option>
-                </select>
-                <button type="submit" class="btn btn-primary">Select</button>
+            <form action="/shop-products/search" method="post" class="form-inline" id="search">
             {{ csrf_field() }}
-            </form>
+            <input class="form-control searchInput" type="text" name="queryString" id="query" placeholder="Search Products" aria-label="Search">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
         </div>
--->
         @foreach($products as $product)
         <div class="col-md-6 col-lg-4 col-xl-3 col-sm-6 col-xs-12 products">
             <div class="card">

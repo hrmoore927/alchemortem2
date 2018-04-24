@@ -5,25 +5,58 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Shipping;
 use Illuminate\Http\Request;
-
+use App\Traits\CaptchaTrait;
 use App\Http\Requests;
 use Auth;
 use Session;
 
 class UserController extends Controller
 {
+    use CaptchaTrait;
+    
     // sign up view
     public function getSignup() {
         return view ('user.signup');
     }
     
+    protected function validator(array $data)
+{
+ 
+    // call the verifyCaptcha method to see if Google approves
+    $data['captcha-verified'] = $this->verifyCaptcha($data['g-recaptcha-response']);
+     
+    $validator = Validator::make($data,
+        [
+            'fName' => 'required',
+            'lName' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:4',
+            'g-recaptcha-response' => 'required|captcha',
+            'captcha-verified' => 'required|min:1'
+        ],
+        [
+            'g-recaptcha-response.required' => 'Please confirm that you are not a robot',
+            'captcha-verified.min' => 'reCaptcha verification failed'
+        ]
+    );
+ 
+//    return $validator;
+}
+    
     // add sign up info to database
     public function postSignup(Request $request) {
+//        $request['g-recaptcha-response'] = $this->captchaCheck();
         $this->validate($request, [
             'fName' => 'required',
             'lName' => 'required',
             'email' => 'email|required|unique:users',
-            'password' => 'required|min:4'
+            'password' => 'required|min:4',
+//            'g-recaptcha-response'  => 'required|captcha',
+//            'captcha' => 'required|min:1'
+        ],
+        [
+//            'g-recaptcha-response.required' => 'Captcha is required',
+//            'captcha.min' => 'Wrong captcha, please try again.'
         ]);
         
         $user = new User([

@@ -30,15 +30,15 @@ Contact Us - Alchemortem
         <form action="{{ route('contact.store') }}" method="post">
             <div class="form-group">
                 <label for="contactName">Your Name</label>
-                <input type="text" id="contactName" name="contactName" class="form-control">
+                <input type="text" id="contactName" name="contactName" class="form-control" value="{{ old('contactName') }}">
             </div>
             <div class="form-group">
                 <label for="contactEmail">Your Email</label>
-                <input type="email" id="contactEmail" name="contactEmail" class="form-control">
+                <input type="email" id="contactEmail" name="contactEmail" class="form-control" value="{{ old('contactEmail') }}">
             </div>
             <div class="form-group">
                 <label for="contactMessage">Comments</label>
-                <textarea id="contactMessage" name="contactMessage" rows="5" cols="40" class="form-control"></textarea>
+                <textarea id="contactMessage" name="contactMessage" rows="5" cols="40" class="form-control" value="{{ old('contactMessage') }}"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Send Message</button>
             {{ csrf_field() }}

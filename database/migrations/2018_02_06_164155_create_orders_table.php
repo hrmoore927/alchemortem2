@@ -24,7 +24,7 @@ class CreateOrdersTable extends Migration
             $table->text('shipState');
             $table->text('shipZip');
             $table->string('custName');
-            $table->timestamp('orderDate')->index('orderDate');
+            $table->date('orderDate')->index('orderDate');
             $table->date('shipDate')->nullable();
             $table->string('orderStatus')->default('paid');
             $table->text('cart');

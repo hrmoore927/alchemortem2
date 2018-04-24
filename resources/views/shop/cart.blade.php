@@ -19,7 +19,7 @@ Cart - Alchemortem
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
-                          <th scope="col">Product Name</th>
+                          <th scope="col">Product</th>
                           <th scope="col">Quantity</th>
                           <th scope="col">Price</th>
                           <th scope="col">Action</th>
