@@ -27,16 +27,16 @@ class UserController extends Controller
      
     $validator = Validator::make($data,
         [
-            'fName' => 'required',
-            'lName' => 'required',
+            'fName' => 'required|alpha',
+            'lName' => 'required|alpha',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:4',
-            'g-recaptcha-response' => 'required|captcha',
-            'captcha-verified' => 'required|min:1'
+            'password' => 'required|min:4|alpha_num'
+//            'g-recaptcha-response' => 'required|captcha',
+//            'captcha-verified' => 'required|min:1'
         ],
         [
-            'g-recaptcha-response.required' => 'Please confirm that you are not a robot',
-            'captcha-verified.min' => 'reCaptcha verification failed'
+//            'g-recaptcha-response.required' => 'Please confirm that you are not a robot',
+//            'captcha-verified.min' => 'reCaptcha verification failed'
         ]
     );
  
@@ -47,10 +47,10 @@ class UserController extends Controller
     public function postSignup(Request $request) {
 //        $request['g-recaptcha-response'] = $this->captchaCheck();
         $this->validate($request, [
-            'fName' => 'required',
-            'lName' => 'required',
-            'email' => 'email|required|unique:users',
-            'password' => 'required|min:4',
+            'fName' => 'required|alpha',
+            'lName' => 'required|alpha',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:4|alpha_num'
 //            'g-recaptcha-response'  => 'required|captcha',
 //            'captcha' => 'required|min:1'
         ],
@@ -87,7 +87,7 @@ class UserController extends Controller
     public function postSignin(Request $request) {
         $this->validate($request, [
             'email' => 'email|required',
-            'password' => 'required|min:4'
+            'password' => 'required|min:4|alpha_num'
         ]);
         
         if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
@@ -115,8 +115,8 @@ class UserController extends Controller
     public function updateInfo(Request $request, $id) {
         $user = User::find($id);
         $this->validate(request(), [
-            'fName' => 'required',
-            'lName' => 'required',
+            'fName' => 'required|alpha',
+            'lName' => 'required|alpha',
             'email' => 'email|required'
         ]);
         $user->fName = $request->input('fName');
@@ -174,8 +174,8 @@ class UserController extends Controller
         if (Auth::check() && Auth::user()->role == 'admin') {
             $user = User::find($id);
             $this->validate(request(), [
-                'fName' => 'required',
-                'lName' => 'required',
+                'fName' => 'required|alpha',
+                'lName' => 'required|alpha',
                 'email' => 'email|required',
                 'role' => 'required'
             ]);

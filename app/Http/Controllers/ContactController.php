@@ -17,6 +17,20 @@ class ContactController extends Controller
     public function store(ContactFormRequest $request) {
         $contact = [];
         
+//        $this->validate($request, [
+//            'name' =>
+//                array(
+//                    'required',
+//                    'regex:/(^[A-Za-z ]+$)+/'
+//                    ),
+//            'email' => 'required|email',
+//            'message' =>
+//                array(
+//                    'required',
+//                    'regex:/(^[A-Za-z0-9 ]+$)+/'
+//                    )
+//        ]);
+        
         $contact['name'] = $request->input('contactName');
         $contact['email'] = $request->input('contactEmail');
         $contact['message'] = $request->input('contactMessage');

@@ -47,22 +47,6 @@ class ProductController extends Controller
         return view('shop.item')->with('product', $product);
     }
     
-//    public function sortPrice(Request $request) {
-//        $value = $request->input('sortPrice');
-//        if ($value == 'asc') {
-//            $products = Product::where('status', '=', 'available')->orderBy('price', 'asc')->get();
-//            $sorted = $products->sortBy('price');
-//            $sorted->values()->all(); 
-//            return view('sort.asc.products')->with('products', $products);
-//        } else {
-//            $products = Product::where('status', '=', 'available')->orderBy('price', 'desc')->get();
-//            $sorted = $products->sortByDesc('price');
-//            $sorted->values()->all();
-//            return view('sort.desc.products')->with('products', $products);
-//        } 
-//        
-//    }
-    
     // add selected item to cart
     public function getAddToCart(Request $request, $id) {
         $product = Product::find($id);
@@ -143,6 +127,27 @@ class ProductController extends Controller
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         
+        $this->validate($request, [
+            'custName' => 
+                array(
+                    'required',
+                    'regex:/(^[A-Za-z0-9 ]+$)+/'
+                    ),
+            'shipLine1' => 
+                array(
+                    'required',
+                    'regex:/(^[A-Za-z0-9 ]+$)+/'
+                    ),
+            'shipLine2' => 
+                array(
+                    'regex:/(^[A-Za-z0-9 ]+$)+/',
+                    'nullable'
+                    ),
+            'shipCity' => 'required|alpha',
+            'shipState' => 'required|alpha',
+            'shipZip' => 'required|numeric'
+        ]);
+        
         Stripe::setApiKey('sk_test_YfQUoYnGFgrzrtXSPnNA5hA3');
         try {
             $charge = Charge::create(array(
@@ -193,14 +198,56 @@ class ProductController extends Controller
     public function postAddProduct(Request $request) {
         if (Auth::check() && Auth::user()->role == 'admin') {
             $this->validate($request, [
-                'productName' => 'required',
-                'image1' => 'required',
-                'image2' => 'required',
-                'description' => 'required',
-                'materials' => 'required',
-                'dimensions' => 'required',
-                'category' => 'required',
-                'price' => 'required'
+                'productName' => 
+                    array(
+                        'required',
+                        'regex:/(^[A-Za-z0-9 ]+$)+/'
+                    ),
+                'image1' => 
+                    array(
+                        'required',
+                        'url'
+                    ),
+                'image2' => 
+                    array(
+                        'required',
+                        'url'
+                    ),
+                'image3' => 
+                    array(
+                        'nullable',
+                        'url'
+                        ),
+                'image4' =>
+                    array(
+                        'nullable',
+                        'url'
+                        ),
+                'description' => 
+                    array(
+                        'required',
+                        'regex:/(^[A-Za-z0-9 ]+$)+/'
+                        ),
+                'materials' => 
+                    array(
+                        'required',
+                        'regex:/(^[A-Za-z0-9 ]+$)+/'
+                        ),
+                'dimensions' => 
+                    array(
+                        'required',
+                        'regex:/(^[A-Za-z0-9 ]+$)+/'
+                        ),
+                'category' => 
+                    array(
+                        'required',
+                        'regex:/(^[A-Za-z0-9 ]+$)+/'
+                        ),
+                'price' => 
+                    array(
+                        'required',
+                        'regex:/(^[A-Za-z0-9 ]+$)+/'
+                        )
             ]);
 
             $product = new Product([
@@ -251,14 +298,56 @@ class ProductController extends Controller
         if (Auth::check() && Auth::user()->role == 'admin') {
             $product = Product::find($id);
             $this->validate(request(), [
-                'productName' => 'required',
-                'image1' => 'required',
-                'image2' => 'required',
-                'description' => 'required',
-                'materials' => 'required',
-                'dimensions' => 'required',
-                'category' => 'required',
-                'price' => 'required',
+                'productName' => 
+                    array(
+                        'required',
+                        'regex:/(^[A-Za-z0-9 ]+$)+/'
+                        ),
+                'image1' => 
+                    array(
+                        'required',
+                        'url'
+                        ),
+                'image2' => 
+                    array(
+                        'required',
+                        'url'
+                        ),
+                'image3' =>
+                    array(
+                        'nullable',
+                        'url'
+                        ),
+                'image4' =>
+                    array(
+                        'nullable',
+                        'url'
+                        ),
+                'description' => 
+                    array(
+                        'required',
+                        'regex:/(^[A-Za-z0-9 ]+$)+/'
+                        ),
+                'materials' => 
+                    array(
+                        'required',
+                        'regex:/(^[A-Za-z0-9 ]+$)+/'
+                        ),
+                'dimensions' => 
+                    array(
+                        'required',
+                        'regex:/(^[A-Za-z0-9 ]+$)+/'
+                        ),
+                'category' => 
+                    array(
+                        'required',
+                        'regex:/(^[A-Za-z0-9 ]+$)+/'
+                        ),
+                'price' => 
+                    array(
+                        'required',
+                        'regex:/(^[A-Za-z0-9 ]+$)+/'
+                        ),
                 'status' => 'required'
             ]);
             $product->productName = $request->input('productName');
