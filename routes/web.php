@@ -17,22 +17,32 @@ Route::get('/', function () {
     return view('partials.index');
 })->name('index');
 
+// assets page
+Route::get('/assets', function () {
+    return view('partials.assets');
+})->name('assets');
+
+// images page
+Route::get('/images', function() {
+    return view('partials.images');
+})->name('images');
+
+//Route::get('page-not-found', 'HomeController@pagenotfound')->name('notfound');
+
 //***********************PRODUCTS********************* 
 // products page
 Route::get('/shop-products', 'ProductController@getProducts')->name('shop.products');
 
-//Route::get('/search', 'ProductController@searchProducts')->name('search');
+// search products
 Route::post('/shop-products/search', 'ProductController@submitSearch');
-
-//Route::post('/shop-products/price-asc', 'ProductController@sortPrice')->name('sort.asc.products');
-//Route::post('/shop-products/price-desc', 'ProductController@sortPrice')->name('sort.desc.products');
 
 // individual item
 Route::get('/item/{id}', 'ProductController@showProduct')->name('show.product');
 
 //***********************CONTACT*********************
-
+// create contact message
 Route::get('/contact', 'ContactController@create')->name('contact.create');
+// store and send contact message
 Route::post('/contact', 'ContactController@store')->name('contact.store');
 
 //***********************SIGN IN/SIGN UP********************* 
@@ -61,12 +71,14 @@ Route::group(['middleware' => 'auth'], function() {
     // user account
     Route::get('/my-account', 'UserController@getAccount')->name('my-account');
     
+    // edit user
     Route::get('edit-info/{id}', 'UserController@editInfo')->name('edit-info');
     Route::patch('/edit-info/{id}', 'UserController@updateInfo');
     
+    // get user orders
     Route::get('/user-orders', 'UserController@getAccountOrders')->name('user-orders');
     
-    //user logout
+    // user logout
     Route::get('/logout', 'UserController@getLogout')->name('logout');
     
     // checkout 
