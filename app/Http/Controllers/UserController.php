@@ -19,29 +19,29 @@ class UserController extends Controller
         return view ('user.signup');
     }
     
-    protected function validator(array $data)
-{
- 
-    // call the verifyCaptcha method to see if Google approves
-    $data['captcha-verified'] = $this->verifyCaptcha($data['g-recaptcha-response']);
-     
-    $validator = Validator::make($data,
-        [
-            'fName' => 'required|alpha',
-            'lName' => 'required|alpha',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:4|alpha_num'
-//            'g-recaptcha-response' => 'required|captcha',
-//            'captcha-verified' => 'required|min:1'
-        ],
-        [
-//            'g-recaptcha-response.required' => 'Please confirm that you are not a robot',
-//            'captcha-verified.min' => 'reCaptcha verification failed'
-        ]
-    );
- 
-//    return $validator;
-}
+//    protected function validator(array $data)
+//{
+// 
+//    // call the verifyCaptcha method to see if Google approves
+//    $data['captcha-verified'] = $this->verifyCaptcha($data['g-recaptcha-response']);
+//     
+//    $validator = Validator::make($data,
+//        [
+//            'fName' => 'required|alpha',
+//            'lName' => 'required|alpha',
+//            'email' => 'required|email|unique:users',
+//            'password' => 'required|min:4|alpha_num'
+////            'g-recaptcha-response' => 'required|captcha',
+////            'captcha-verified' => 'required|min:1'
+//        ],
+//        [
+////            'g-recaptcha-response.required' => 'Please confirm that you are not a robot',
+////            'captcha-verified.min' => 'reCaptcha verification failed'
+//        ]
+//    );
+// 
+////    return $validator;
+//}
     
     // add sign up info to database
     public function postSignup(Request $request) {
@@ -59,6 +59,7 @@ class UserController extends Controller
 //            'captcha.min' => 'Wrong captcha, please try again.'
         ]);
         
+//        store user to database
         $user = new User([
             'fName' => $request->input('fName'),
             'lName' => $request->input('lName'),
@@ -67,6 +68,7 @@ class UserController extends Controller
         ]);
         $user->save();
         
+//        login the new user
         Auth::login($user);
         
         if (Session::has('oldUrl')) {
@@ -107,11 +109,13 @@ class UserController extends Controller
         return view('user.user-info')->with('user', $user);
     }
     
+//    edit form for user info
     public function editInfo($id) {
         $user = User::find($id);
         return view('user.edit-info', compact('user', 'id'));
     }
     
+//    update user info
     public function updateInfo(Request $request, $id) {
         $user = User::find($id);
         $this->validate(request(), [
@@ -126,6 +130,7 @@ class UserController extends Controller
         return redirect('my-account')->with('success', 'Account infomation has been updated!');
     }
     
+//    get user orders
     public function getAccountOrders() {
         $orders = Auth::user()->orders;
         $orders->transform(function($order, $key) {
