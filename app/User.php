@@ -15,6 +15,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+//    user fields to be stored
     protected $fillable = [
         'fName', 'lName', 'email', 'password', 'role'
     ];
@@ -28,6 +29,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
     
+//    orders have one user
     public function orders() {
         return $this->hasMany('App\Order');
     }
