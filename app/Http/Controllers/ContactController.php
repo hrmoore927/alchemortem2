@@ -17,24 +17,12 @@ class ContactController extends Controller
     public function store(ContactFormRequest $request) {
         $contact = [];
         
-//        $this->validate($request, [
-//            'name' =>
-//                array(
-//                    'required',
-//                    'regex:/(^[A-Za-z ]+$)+/'
-//                    ),
-//            'email' => 'required|email',
-//            'message' =>
-//                array(
-//                    'required',
-//                    'regex:/(^[A-Za-z0-9 ]+$)+/'
-//                    )
-//        ]);
-        
+//        request inputs from form
         $contact['name'] = $request->input('contactName');
         $contact['email'] = $request->input('contactEmail');
         $contact['message'] = $request->input('contactMessage');
         
+//        send inputs to alchemortem@gmail.com
         Mail::to(config('mail.from.address'))->send(new ContactEmail($contact));
         
         return redirect()->route('contact.create')->with('success', 'Your message has been sent!');
