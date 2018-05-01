@@ -28,6 +28,7 @@ class ProductController extends Controller
         return view('shop.products')->with('products', $products);
     }
     
+//    search products
     public function searchProducts($search)
     {
         $products = Product::where('productName', 'LIKE', '%'.$search.'%')->get();
@@ -35,6 +36,7 @@ class ProductController extends Controller
         return $products;
     }
 
+//    results from search
     public function submitSearch(Request $request)
     {
 //        dd($request->queryString);
@@ -68,11 +70,12 @@ class ProductController extends Controller
         return view('shop.cart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
     }
     
-    public function randomItems(){
-        $mightLike = collect(Product::where('status', '=', 'available'))->random(4);
-        return view('shop.cart')->with('mightLike', $mightLike);
-    }
+//    public function randomItems(){
+//        $mightLike = collect(Product::where('status', '=', 'available'))->random(4);
+//        return view('shop.cart')->with('mightLike', $mightLike);
+//    }
     
+//    reduce cart item
     public function getReduceByOne($id) {
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
@@ -86,6 +89,7 @@ class ProductController extends Controller
         return redirect()->route('cart');
     }
     
+//    increase cart item
     public function getIncreaseByOne($id) {
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
@@ -95,6 +99,7 @@ class ProductController extends Controller
         return redirect()->route('cart');
     }
     
+//    remove cart item
     public function getRemoveItem($id) {
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
@@ -120,6 +125,7 @@ class ProductController extends Controller
         return view('shop.checkout', ['total' => $total]);
     }
     
+//    post checkout inputs to database
     public function postCheckout(Request $request) {
         if (!Session::has('cart')) {
             return view('shop.cart', ['products' => null]);
@@ -148,6 +154,7 @@ class ProductController extends Controller
             'shipZip' => 'required|numeric'
         ]);
         
+//        stripe checkout
         Stripe::setApiKey('sk_test_YfQUoYnGFgrzrtXSPnNA5hA3');
         try {
             $charge = Charge::create(array(
@@ -157,6 +164,7 @@ class ProductController extends Controller
                 "description" => "Test charge"
             ));
             
+//            store order to database
             $carbon = Carbon::today();
             $order = new Order([
                 'cart' => serialize($cart),
@@ -170,7 +178,6 @@ class ProductController extends Controller
                 'payment_id' => $charge->id
             ]);
             Auth::user()->orders()->save($order);
-//            Mail::send(new OrderReceived);
         } 
         catch (Exception $e) {
             return redirect()->route('checkout');
@@ -180,16 +187,20 @@ class ProductController extends Controller
         return redirect()->route('index')->with('success', 'Your order has been successfully placed! Thank you!');
     }
     
-    public function successfulCheckout() {
-        return view ('shop.successful-checkout');
-    }
+//    version 2 successful checkout view
+//    public function successfulCheckout() {
+//        return view ('shop.successful-checkout');
+//    }
     
     // ADMIN ONLY
     // add a product view
     public function getProductForm() {
+//        if the user is logged in and role is admin
         if (Auth::check() && Auth::user()->role == 'admin') {
             return view ('shop.add-product');
-        } else {
+        }
+//        guests and users see unauthorized access page
+        else {
             return view('errors.unauthorized');
         }
     }
@@ -250,6 +261,7 @@ class ProductController extends Controller
                         )
             ]);
 
+//            store product to database
             $product = new Product([
                 'productName' => $request->input('productName'),
                 'image1' => $request->input('image1'),
@@ -379,6 +391,7 @@ class ProductController extends Controller
         }
     }
     
+//    show all orders
     public function getAllOrders() {
         if (Auth::check() && Auth::user()->role == 'admin') {
             $orders = Order::all();
@@ -392,15 +405,15 @@ class ProductController extends Controller
         }
     }
     
-    public function updateOrderStatus(Request $request, $id) {
-        if (Auth::check() && Auth::user()->role == 'admin') {
-            $order = Order::find($id);
-            $order->orderStatus = $request->input('orderStatus');
-            $order->updated_at = now();
-            $order->save();
-            return redirect('manage-orders')->with('success', 'Order status has been updated!');
-        } else {
-            return view('errors.unauthorized');
-        }
-    }
+//    public function updateOrderStatus(Request $request, $id) {
+//        if (Auth::check() && Auth::user()->role == 'admin') {
+//            $order = Order::find($id);
+//            $order->orderStatus = $request->input('orderStatus');
+//            $order->updated_at = now();
+//            $order->save();
+//            return redirect('manage-orders')->with('success', 'Order status has been updated!');
+//        } else {
+//            return view('errors.unauthorized');
+//        }
+//    }
 }
